@@ -21,6 +21,7 @@ class SlidingSwitch extends StatefulWidget {
   final Function onSwipe;
 
   const SlidingSwitch({
+    super.key,
     required this.value,
     required this.onChanged,
     this.height = 55,
@@ -39,7 +40,7 @@ class SlidingSwitch extends StatefulWidget {
     this.background = const Color(0xffe4e5eb),
     this.buttonColor = const Color(0xfff7f5f7),
     this.inactiveColor = const Color(0xff636f7b),
-  }) : super();
+  });
   @override
   _SlidingSwitch createState() => _SlidingSwitch();
 }
@@ -90,22 +91,26 @@ class _SlidingSwitch extends State<SlidingSwitch> with SingleTickerProviderState
           height: widget.height,
           width: widget.width,
           decoration: BoxDecoration(color: widget.background, borderRadius: BorderRadius.circular(50)),
-          padding: EdgeInsets.all(2),
+          padding: const EdgeInsets.all(2),
           child: Stack(children: <Widget>[
             Transform.translate(
-                offset: Offset(((widget.width * 0.5) * value - (2 * value)), 0),
-                child: Container(
-                  height: widget.height,
-                  width: widget.width * 0.5 - 4,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(50.0)), color: widget.buttonColor, boxShadow: [
-                    new BoxShadow(
+              offset: Offset(((widget.width * 0.5) * value - (2 * value)), 0),
+              child: Container(
+                height: widget.height,
+                width: widget.width * 0.5 - 4,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                  color: widget.buttonColor,
+                  boxShadow: [
+                    BoxShadow(
                       color: Colors.black.withOpacity(0.2),
-                      offset: Offset(0, 10),
+                      offset: const Offset(0, 10),
                       blurRadius: 20.0,
                     ),
-                  ]),
-                )),
+                  ],
+                ),
+              ),
+            ),
             Row(
               children: [
                 Expanded(
