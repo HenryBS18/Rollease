@@ -1,6 +1,4 @@
-import 'package:geolocator/geolocator.dart';
-import 'package:rollease/models/station.dart';
-import 'package:rollease/utils/determine_position.dart';
+part of 'utils.dart';
 
 Future<void> determineNearestStation(List<Station> stationList, Function(Map nearestStation) function) async {
   List<Map<String, dynamic>> result = [];
