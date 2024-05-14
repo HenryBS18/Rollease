@@ -1,4 +1,4 @@
-import 'package:geolocator/geolocator.dart';
+part of 'utils.dart';
 
 Future<Position> determinePosition() async {
   bool serviceEnabled;
