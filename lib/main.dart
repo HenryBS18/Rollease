@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Roll Esease",
+      title: "Rollease",
       debugShowCheckedModeBanner: false,
       home: Text("Home"),
     );
