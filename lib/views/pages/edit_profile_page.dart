@@ -1,11 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:animate_do/animate_do.dart';
-import 'profileScreen.dart';
-import 'package:rollease/views/widgets/date_field.dart';
+part of 'pages.dart';
 
-class EditProfile extends StatelessWidget {
-  const EditProfile({Key? key}) : super(key: key);
+class EditProfilePage extends StatelessWidget {
+  const EditProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -74,13 +70,12 @@ class EditProfile extends StatelessWidget {
                       hintText: '',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color:Color(0xFFA2C90C)),
+                        borderSide: BorderSide(color: Color(0xFFA2C90C)),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color(0xFFA2C90C)), 
+                        borderSide: BorderSide(color: Color(0xFFA2C90C)),
                       ),
-                   
                     ),
                   ),
                   SizedBox(height: 10),
@@ -97,11 +92,11 @@ class EditProfile extends StatelessWidget {
                       hintText: '',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color:Color(0xFFA2C90C)),
+                        borderSide: BorderSide(color: Color(0xFFA2C90C)),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color(0xFFA2C90C)), 
+                        borderSide: BorderSide(color: Color(0xFFA2C90C)),
                       ),
                     ),
                   ),
@@ -129,7 +124,7 @@ class EditProfile extends StatelessWidget {
                               Navigator.pop(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ProfileScreen(),
+                                  builder: (context) => ProfilePage(),
                                 ),
                               );
                             },

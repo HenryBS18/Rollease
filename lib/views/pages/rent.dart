@@ -1,5 +1,5 @@
 import 'package:flutter/animation.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
@@ -86,16 +86,14 @@ class _RentDurationState extends State<RentDuration> {
                     children: [
                       Text(
                         "Scooter 1",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: 7,
                       ),
                       Text(
                         "Station A",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       Row(
                         children: [
@@ -118,8 +116,7 @@ class _RentDurationState extends State<RentDuration> {
                       ),
                       Text(
                         "Power",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: 5,
@@ -128,8 +125,7 @@ class _RentDurationState extends State<RentDuration> {
                         children: [
                           Text(
                             "89%",
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
                             width: 3,
@@ -161,15 +157,11 @@ class _RentDurationState extends State<RentDuration> {
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    borderSide: const BorderSide(
-                        color: Color(0xFFA2C90C),
-                        width: 1.0), // Adjust color and width as needed
+                    borderSide: const BorderSide(color: Color(0xFFA2C90C), width: 1.0), // Adjust color and width as needed
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    borderSide: const BorderSide(
-                        color:  Color(0xFFA2C90C),
-                        width: 2.0), // Adjust color and width as needed
+                    borderSide: const BorderSide(color: Color(0xFFA2C90C), width: 2.0), // Adjust color and width as needed
                   ),
                   hintText: 'Pilih jenis sewa',
                 ),
@@ -186,11 +178,24 @@ class _RentDurationState extends State<RentDuration> {
                   });
                 },
               ),
-              SizedBox(height: 20,),
-              Text("Cost", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), ),
-              Text("RP300.000/meter", style: TextStyle(fontSize: 18, color:  Color(0xFFA2C90C)),),
-              SizedBox(height: 20,),
-              Text("Payment Method", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Cost",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                "RP300.000/meter",
+                style: TextStyle(fontSize: 18, color: Color(0xFFA2C90C)),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Payment Method",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
               itemProfile("OVO", Icons.wallet)
             ],
           ),

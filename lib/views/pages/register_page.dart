@@ -1,9 +1,13 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:flutter/material.dart';
-import "package:rollease/views/pages/sign_up.dart";
-import 'rate.dart';
+part of 'pages.dart';
 
-class LoginScreen extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  bool isChecked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +20,7 @@ class LoginScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             size: 20,
             color: Colors.black,
@@ -24,7 +28,8 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(      
+        child: Container(
+          height: MediaQuery.of(context).size.height,
           width: double.infinity,
           padding: EdgeInsets.symmetric(horizontal: 40),
           child: Column(
@@ -33,20 +38,20 @@ class LoginScreen extends StatelessWidget {
               FadeInUp(
                 duration: Duration(milliseconds: 1000),
                 child: const Text(
-                  "Welcome Back!!",
+                  "Create Account",
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               FadeInUp(
                 duration: Duration(milliseconds: 1200),
                 child: Text(
-                  "Silahkan masuk menggunakan akun yang telah didaftar.",
+                  "Silahkan mengisi kelengkapan data untuk membuat akun",
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.grey[700],
@@ -57,7 +62,7 @@ class LoginScreen extends StatelessWidget {
               FadeInUp(
                 duration: Duration(milliseconds: 1300),
                 child: Image.asset(
-                  'icon5.png',
+                  'LoginSignup.png',
                   height: 150,
                 ),
               ),
@@ -65,7 +70,22 @@ class LoginScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 const Text(
+                  const Text(
+                    'Nama Lengkap',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'Nama lengkap anda',
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  const Text(
                     'Alamat Email',
                     style: TextStyle(
                       fontSize: 16,
@@ -76,8 +96,22 @@ class LoginScreen extends StatelessWidget {
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: 'emailanda@gmail.com',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  const Text(
+                    'Tanggal Lahir',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'DD/MM/YYYY',
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                     ),
                   ),
                   SizedBox(height: 20),
@@ -93,9 +127,47 @@ class LoginScreen extends StatelessWidget {
                     obscureText: true,
                     decoration: InputDecoration(
                       hintText: '**********',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
                     ),
+                  ),
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            isChecked = !isChecked;
+                          });
+                        },
+                        splashColor: Color(0xFFA2C90C),
+                        child: Checkbox(
+                          value: isChecked,
+                          onChanged: (newValue) {
+                            setState(() {
+                              isChecked = newValue!;
+                            });
+                          },
+                        ),
+                      ),
+                      const Text(
+                        'Setuju dengan',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => TermsAndConditonsPage()),
+                          );
+                        },
+                        child: const Text(
+                          " Syarat & Ketentuan",
+                          style: TextStyle(
+                            color: Color(0xFFA2C90C),
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -107,20 +179,18 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     MaterialButton(
                       height: 45,
-                      minWidth: 169,
-                      onPressed: () {
-                        RateApp.showFeedbackBottomSheet(context: context,);
-                      },
+                      minWidth: 172,
+                      onPressed: () {},
                       color: Color(0xFFA2C90C),
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(9),
                       ),
-                      child:const Text(
-                        "Login",
+                      child: const Text(
+                        "Create Account",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 18,
+                          fontSize: 12,
                           color: Colors.white,
                         ),
                       ),
@@ -134,7 +204,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         padding: EdgeInsets.all(8),
                         child: const Icon(
-                          Icons.arrow_forward,
+                          Icons.person,
                           color: Colors.white,
                         ),
                       ),
@@ -148,23 +218,23 @@ class LoginScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Don't have an account? "),
+                    Text("Already have an account? "),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SignUpScreen()),
+                          MaterialPageRoute(builder: (context) => LoginPage()),
                         );
                       },
                       child: const Text(
-                        "Sign In",
+                        "Login",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 12,
                           color: Color(0xFFA2C90C),
                         ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),

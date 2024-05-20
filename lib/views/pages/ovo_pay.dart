@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'debitPay.dart';
+import 'debit_pay.dart';
 
 class OvoPayment extends StatelessWidget {
   const OvoPayment({Key? key}) : super(key: key);
@@ -65,10 +64,7 @@ class OvoPayment extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DebitPayment()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => DebitPayment()));
                     },
                     child: const Card(
                       elevation: 0,
@@ -82,7 +78,8 @@ class OvoPayment extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Icon(
-                                Icons.account_balance_wallet, color: Color(0xFF81895F),
+                                Icons.account_balance_wallet,
+                                color: Color(0xFF81895F),
                                 size: 55,
                               ),
                               Text(
@@ -114,7 +111,8 @@ class OvoPayment extends StatelessWidget {
                           children: <Widget>[
                             Icon(
                               Icons.wallet,
-                              size: 55, color: Color(0xFF81895F),
+                              size: 55,
+                              color: Color(0xFF81895F),
                             ),
                             Text(
                               "ovo",
@@ -135,8 +133,7 @@ class OvoPayment extends StatelessWidget {
               ),
               const Card(
                 shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                  side: BorderSide(color:  Color(0xFFA2C90C))),
+                    borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFA2C90C))),
                 child: ListTile(
                   title: Text(
                     "Balance",
@@ -147,8 +144,7 @@ class OvoPayment extends StatelessWidget {
                       Expanded(
                         child: Text(
                           "Rp230.031",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.grey),
+                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
                         ),
                       ),
                       SizedBox(width: 20),
@@ -156,10 +152,7 @@ class OvoPayment extends StatelessWidget {
                         child: Text(
                           "OVO",
                           textAlign: TextAlign.right,
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.purple,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 16, color: Colors.purple, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ],
