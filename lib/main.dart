@@ -1,13 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rollease/views/pages/debitPay.dart';
-import 'package:rollease/views/pages/ovoPay.dart';
-import 'package:rollease/views/pages/historyScreen.dart';
-import 'package:rollease/views/pages/editScreen.dart';
-import 'package:rollease/views/pages/profileScreen.dart';
-import 'package:rollease/views/pages/promoScreen.dart';
-import 'package:rollease/views/pages/rate.dart';
-import 'package:rollease/views/pages/terms.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Roll Esease",
       debugShowCheckedModeBanner: false,
-      home: EditProfile(),
+      home: Text("Home"),
     );
   }
 }
