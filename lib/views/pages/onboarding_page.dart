@@ -1,18 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:animate_do/animate_do.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:rollease/pages/loginScreen.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+part of 'pages.dart';
 
-
-class OnBoarding extends StatefulWidget {
-  const OnBoarding({Key? key}) : super(key: key);
+class OnBoardingPage extends StatefulWidget {
+  const OnBoardingPage({Key? key}) : super(key: key);
 
   @override
-  State<OnBoarding> createState() => _OnBoarding();
+  State<OnBoardingPage> createState() => _OnBoardingPage();
 }
 
-class _OnBoarding extends State<OnBoarding> {
+class _OnBoardingPage extends State<OnBoardingPage> {
   PageController pageController = PageController(initialPage: 0);
   int currentIndex = 0;
 
@@ -81,7 +76,7 @@ class _OnBoarding extends State<OnBoarding> {
                       top: 66,
                       left: 21,
                       child: Image.asset(
-                        "images/LogoUtama.png",
+                        "LogoUtama.png",
                         width: 89,
                         height: 74,
                       ),
@@ -94,8 +89,7 @@ class _OnBoarding extends State<OnBoarding> {
           Expanded(
             flex: 1,
             child: Padding(
-              padding:
-                  const EdgeInsets.only(bottom: 45), // Atur jarak dengan bottom
+              padding: const EdgeInsets.only(bottom: 45), // Atur jarak dengan bottom
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -108,8 +102,10 @@ class _OnBoarding extends State<OnBoarding> {
                       dotWidth: 10.0,
                       dotHeight: 10.0,
                       expansionFactor: 3.8,
-                      dotColor: Color.fromARGB(255, 98, 214, 145),
-                      activeDotColor: Colors.green,
+                      dotColor: Color(
+                        0xFFA2C90C,
+                      ),
+                      activeDotColor: Color(0xFFA2C90C),
                     ),
                     onDotClicked: (newIndex) {
                       setState(() {
@@ -127,13 +123,11 @@ class _OnBoarding extends State<OnBoarding> {
                       ? Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 24),
                           child: PrimaryButton(
-                            onTap: () { Navigator.push(
+                            onTap: () {
+                              Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => LoginScreen()), // Navigasi ke halaman login
+                                MaterialPageRoute(builder: (context) => LoginPage()), // Navigasi ke halaman login
                               );
-                              //                         Navigator.of(context).pushReplacement( MaterialPageRoute(builder: (_) => LoginScreen()),
-                              // );
                             },
                             text: 'Get Started',
                           ),
@@ -142,7 +136,6 @@ class _OnBoarding extends State<OnBoarding> {
                           padding: const EdgeInsets.symmetric(horizontal: 50),
                           child: PrimaryButton(
                             onTap: () {
-                              
                               setState(() {
                                 pageController.animateToPage(
                                   3,
@@ -179,7 +172,9 @@ class PrimaryButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        backgroundColor: Colors.green,
+        backgroundColor: Color(
+          0xFFA2C90C,
+        ),
       ),
       child: Text(
         text,
@@ -231,19 +226,19 @@ class Items {
 
 List<Items> listOfItems = [
   Items(
-    img: "images/Icon3.png",
+    img: "Icon3.png",
     title: "Pesan melalui aplikasi",
   ),
   Items(
-    img: "images/Icon4.png",
+    img: "Icon4.png",
     title: "Pilih tipe kendaraan",
   ),
   Items(
-    img: "images/Icon4.png",
+    img: "Icon4.png",
     title: "Scan QR Code",
   ),
   Items(
-    img: "images/icon4(1).png",
+    img: "icon4(1).png",
     title: "Mengendarai",
   ),
 ];

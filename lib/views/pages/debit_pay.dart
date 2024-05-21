@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'ovoPay.dart';
+import 'ovo_pay.dart';
 
 class DebitPayment extends StatelessWidget {
   const DebitPayment({Key? key}) : super(key: key);
@@ -65,9 +63,7 @@ class DebitPayment extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      
-                    },
+                    onTap: () {},
                     child: const Card(
                       elevation: 0,
                       color: Color(0xFFA2C90C),
@@ -80,7 +76,8 @@ class DebitPayment extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Icon(
-                                Icons.account_balance_wallet,color: Color(0xFF81895F),
+                                Icons.account_balance_wallet,
+                                color: Color(0xFF81895F),
                                 size: 55,
                               ),
                               Text(
@@ -96,17 +93,14 @@ class DebitPayment extends StatelessWidget {
                       ),
                     ),
                   ),
-                 const SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   GestureDetector(
                     onTap: () {
-                     Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => OvoPayment()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => OvoPayment()));
                     },
-                    child:const Card(
+                    child: const Card(
                       elevation: 0,
                       color: Color(0xFFF0F8CF),
                       child: SizedBox(
@@ -118,7 +112,8 @@ class DebitPayment extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Icon(
-                                Icons.wallet, color: Color(0xFF81895F),
+                                Icons.wallet,
+                                color: Color(0xFF81895F),
                                 size: 55,
                               ),
                               Text(
@@ -152,11 +147,15 @@ class DebitPayment extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.add, color: Color(0xFF81895F),), 
+                            Icon(
+                              Icons.add,
+                              color: Color(0xFF81895F),
+                            ),
                             SizedBox(width: 8),
                             Text(
                               "add new card",
-                              textAlign: TextAlign.center, style: TextStyle(color: Color(0xFF81895F)),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Color(0xFF81895F)),
                             ),
                           ],
                         ),
@@ -174,8 +173,7 @@ class DebitPayment extends StatelessWidget {
                   height: 70,
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                        side: BorderSide(color: Color(0xFFA2C90C))),
+                        borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFA2C90C))),
                     child: Padding(
                       padding: EdgeInsets.all(10.0),
                       child: Column(

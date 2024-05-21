@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:rollease/views/pages/onboadring.dart';
+part of 'pages.dart';
 
 class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Tunggu selama 3 detik sebelum berpindah ke OnBoardingScreen
     Future.delayed(Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => OnBoarding()),
+        MaterialPageRoute(builder: (_) => OnBoardingPage()),
       );
     });
 
