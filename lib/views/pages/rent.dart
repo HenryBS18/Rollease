@@ -1,10 +1,8 @@
-import 'package:flutter/animation.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:rollease/views/widgets/item_profile.dart';
+import 'rent.dart';
+import 'promoScreen.dart';
 
 class RentDuration extends StatefulWidget {
   const RentDuration({Key? key}) : super(key: key);
@@ -14,7 +12,7 @@ class RentDuration extends StatefulWidget {
 }
 
 class _RentDurationState extends State<RentDuration> {
-  String? _selectedRentType; // Nilai awal dropdown
+  String? _selectedRentType;
 
   @override
   Widget build(BuildContext context) {
@@ -81,73 +79,78 @@ class _RentDurationState extends State<RentDuration> {
                   SizedBox(
                     width: 5,
                   ),
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Scooter 1",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 7,
-                      ),
-                      Text(
-                        "Station A",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on_sharp,
-                            color: Color(0xFFA2C90C),
-                          ),
-                          Text(
-                            "Kampus UC Makassar",
-                            style: TextStyle(
-                                color: Color(
-                                  0xFFA2C90C,
-                                ),
-                                fontSize: 12),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 7,
-                      ),
-                      Text(
-                        "Power",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            "89%",
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 3,
-                          ),
-                          Image(
-                              image: AssetImage(
-                            "Battery90.png",
-                          ))
-                        ],
-                      ),
-                    ],
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Scooter 1",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 7,
+                        ),
+                        Text(
+                          "Station A",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on_sharp,
+                              color: Color(0xFFA2C90C),
+                            ),
+                            Expanded(
+                              child: Text(
+                                "Kampus UC Makassar",
+                                style: TextStyle(
+                                    color: Color(
+                                      0xFFA2C90C,
+                                    ),
+                                    fontSize: 12),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 7,
+                        ),
+                        Text(
+                          "Power",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "89%",
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              width: 3,
+                            ),
+                            Image(
+                                image: AssetImage(
+                              "images/Battery90.png",
+                            ))
+                          ],
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),
               SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "Type of Rent",
                 style: TextStyle(
                   fontSize: 18,
@@ -158,18 +161,16 @@ class _RentDurationState extends State<RentDuration> {
                 height: 5,
               ),
               DropdownButtonFormField<String>(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    borderSide: const BorderSide(
-                        color: Color(0xFFA2C90C),
-                        width: 1.0), // Adjust color and width as needed
+                    borderSide:
+                        BorderSide(color: Color(0xFFA2C90C), width: 1.0),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    borderSide: const BorderSide(
-                        color:  Color(0xFFA2C90C),
-                        width: 2.0), // Adjust color and width as needed
+                    borderSide:
+                        BorderSide(color: Color(0xFFA2C90C), width: 2.0),
                   ),
                   hintText: 'Pilih jenis sewa',
                 ),
@@ -186,12 +187,113 @@ class _RentDurationState extends State<RentDuration> {
                   });
                 },
               ),
-              SizedBox(height: 20,),
-              Text("Cost", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), ),
-              Text("RP300.000/meter", style: TextStyle(fontSize: 18, color:  Color(0xFFA2C90C)),),
-              SizedBox(height: 20,),
-              Text("Payment Method", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-              itemProfile("OVO", Icons.wallet)
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                "Cost",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const Text(
+                "RP300.000/meter",
+                style: TextStyle(fontSize: 18, color: Color(0xFFA2C90C)),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                "Payment Method",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                margin: EdgeInsets.only(top: 10, bottom: 20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: Color(0xFFA2C90C)),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "OVO",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.wallet, color: Colors.grey),
+                        SizedBox(width: 8),
+                        Text(
+                          "Rp71.400",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  const Text(
+                    "Once your riding session is over, you can apply ",
+                    style: TextStyle(fontSize: 10),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PromoScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      "promo codes",
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Color(0xFFA2C90C),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Center(
+                child: FadeInUp(
+                  duration: Duration(milliseconds: 1400),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      MaterialButton(
+                        height: 45,
+                        minWidth: 160,
+                        onPressed: () {},
+                        color: Color(0xFFA2C90C),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(9),
+                        ),
+                        child: const Text(
+                          "Book",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

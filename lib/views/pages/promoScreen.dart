@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rollease/views/pages/rent.dart';
 
 class PromoScreen extends StatefulWidget {
   const PromoScreen({Key? key}) : super(key: key);
@@ -53,7 +54,7 @@ class _PromoScreenState extends State<PromoScreen> {
             color: Colors.black,
           ),
         ),
-        title:const Text(
+        title: const Text(
           "Back",
           style: TextStyle(
             color: Colors.black,
@@ -69,7 +70,7 @@ class _PromoScreenState extends State<PromoScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 5),
-            const  Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CircleAvatar(
@@ -121,9 +122,8 @@ class _PromoScreenState extends State<PromoScreen> {
                 itemBuilder: (context, index) {
                   return Card(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      side: BorderSide(color:Color(0xFFA2C90C) )
-                    ),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        side: BorderSide(color: Color(0xFFA2C90C))),
                     child: ListTile(
                       leading: Image.asset('disc1.png'),
                       title: Text(
@@ -135,7 +135,12 @@ class _PromoScreenState extends State<PromoScreen> {
                         style: TextStyle(fontSize: 11),
                       ),
                       trailing: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RentDuration()));
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFFA2C90C),
                           shape: RoundedRectangleBorder(

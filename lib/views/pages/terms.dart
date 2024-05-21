@@ -69,9 +69,10 @@ class TermsAndConditon extends StatelessWidget {
                   "3. Bukan Layanan Pengiriman Barang: Layanan Scooter bukanlah layanan untuk pengiriman barang atau kurir instan. Sehingga dilarang menggunakan scooter untuk melakukan pengiriman barang.\n\n"
                   "4. Ketentuan umur: pengguna dibawah umur 14 tahun dilarang menggunakan scooter.\n\n"
                   "5. Keselamatan Penumpang: Penumpang bertanggung jawab atas keselamatannya sendiri dan wajib mematuhi peraturan lalu lintas.\n\n"
-                  "6. Biaya Layanan: Biaya Layanan Scooter akan ditawarkan dan ditampilkan pada Aplikasi scooter sebelum penggunaan layanan. Penawaran dan biaya dapat berubah dari waktu ke waktu berdasarkan faktor seperti lokasi, waktu, dan peraturan yang berlaku.\n\n"
-                  "7. Hak Kekayaan Intelektual: Skuter, merek dagang, dan materi lain yang terkait dengan layanan ini tetap menjadi milik penyedia layanan. Pengguna tidak diperbolehkan menggunakan, menyalin, atau mendistribusikan materi tersebut tanpa izin tertulis dari penyedia layanan.\n\n"
-                  "8. Pengembalian scooter: Pengguna harus mengembalikan skuter ke lokasi yang ditentukan dalam kondisi yang baik dan dalam waktu yang telah ditentukan. Keterlambatan dalam pengembalian dapat dikenakan biaya tambahan.",
+                  "6. Biaya Layanan: Biaya Layanan Scooter akan ditawarkan dan ditampilkan pada Aplikasi scooter sebelum penggunaan layanan.\n\n"
+                  "7. Denda: pengguna diharuskan membayar denda apabila terjadi kerusakan pada scooter saat sedang digunakan.\n\n"
+                  "8. Hak Kekayaan Intelektual: Skuter, merek dagang, dan materi lain yang terkait dengan layanan ini tetap menjadi milik penyedia layanan. Pengguna tidak diperbolehkan menggunakan, menyalin, atau mendistribusikan materi tersebut tanpa izin tertulis dari penyedia layanan.\n\n"
+                  "9. Pengembalian scooter: Pengguna harus mengembalikan skuter ke lokasi yang ditentukan dalam kondisi yang baik dan dalam waktu yang telah ditentukan. Keterlambatan dalam pengembalian dapat dikenakan biaya tambahan.",
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.black,
