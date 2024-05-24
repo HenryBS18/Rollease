@@ -9,8 +9,7 @@ class RateApp extends StatelessWidget {
     return FutureBuilder<void>(
       future: showFeedbackBottomSheet(context: context),
       builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-        return SizedBox
-            .shrink(); // Mengembalikan widget kosong sementara menunggu tampilan bottom sheet.
+        return SizedBox.shrink(); // Mengembalikan widget kosong sementara menunggu tampilan bottom sheet.
       },
     );
   }
@@ -54,7 +53,7 @@ class RateApp extends StatelessWidget {
                   ),
                 ),
                 Image.asset(
-                  "rate.png",
+                  "assets/rate.png",
                   width: 260,
                   height: 150,
                 ),
@@ -76,8 +75,7 @@ class RateApp extends StatelessWidget {
                   allowHalfRating: true,
                   unratedColor: Colors.grey[400],
                   itemSize: 50,
-                  itemBuilder: (context, _) =>
-                      const Icon(Icons.star, color: Color(0xFFA2C90C)),
+                  itemBuilder: (context, _) => const Icon(Icons.star, color: Color(0xFFA2C90C)),
                   onRatingUpdate: (rating) {
                     // Navigator.pop(context);
                   },

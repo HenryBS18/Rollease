@@ -32,7 +32,7 @@ class _DebitCardState extends State<DebitCard> {
               children: [
                 Text(
                   widget.name,
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
                 Image.asset(
                   "assets/mastercard.png",
@@ -42,7 +42,7 @@ class _DebitCardState extends State<DebitCard> {
               ],
             ),
             const SizedBox(width: 24),
-            Text(
+            const Text(
               "******789",
               style: TextStyle(fontSize: 20),
             ),

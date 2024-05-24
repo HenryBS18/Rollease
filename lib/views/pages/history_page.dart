@@ -63,7 +63,7 @@ class History extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFA2C90C))),
                 child: ListTile(
-                  leading: Image.asset('25.png'),
+                  leading: Image.asset('assets/25.png'),
                   title: Text("Electric Scooter", style: TextStyle(fontWeight: FontWeight.bold)),
                   subtitle: const Row(
                     children: [
@@ -110,7 +110,7 @@ class History extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFA2C90C))),
                 child: ListTile(
-                    leading: Image.asset('102.png'),
+                    leading: Image.asset('assets/102.png'),
                     title: Text("Electric Bike", style: TextStyle(fontWeight: FontWeight.bold)),
                     subtitle: const Row(
                       children: [
@@ -156,7 +156,7 @@ class History extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFA2C90C))),
                 child: ListTile(
-                  leading: Image.asset('25.png'),
+                  leading: Image.asset('assets/25.png'),
                   title: Text("Electric Scooter", style: TextStyle(fontWeight: FontWeight.bold)),
                   subtitle: const Row(
                     children: [
@@ -203,7 +203,7 @@ class History extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFA2C90C))),
                 child: ListTile(
-                    leading: Image.asset('102.png'),
+                    leading: Image.asset('assets/102.png'),
                     title: Text(
                       "Electric Bike",
                       style: TextStyle(fontWeight: FontWeight.bold),

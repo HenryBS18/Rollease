@@ -27,3 +27,4 @@ part 'login_page.dart';
 part 'register_page.dart';
 part 'terms_and_conditions_page.dart';
 part 'payment_page.dart';
+part 'rent.dart';

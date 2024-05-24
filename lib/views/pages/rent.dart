@@ -1,10 +1,4 @@
-import 'package:flutter/animation.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:rollease/views/widgets/item_profile.dart';
+part of 'pages.dart';
 
 class RentDuration extends StatefulWidget {
   const RentDuration({Key? key}) : super(key: key);
@@ -53,7 +47,7 @@ class _RentDurationState extends State<RentDuration> {
                 children: [
                   GestureDetector(
                     onTap: () {},
-                    child: const Card(
+                    child: Card(
                       elevation: 0,
                       color: Color(0x4DA2C90C),
                       child: SizedBox(
@@ -63,15 +57,8 @@ class _RentDurationState extends State<RentDuration> {
                           padding: EdgeInsets.all(15.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Expanded(
-                                child: Image(
-                                  image: AssetImage(
-                                    "25.png",
-                                  ),
-                                  fit: BoxFit.fill,
-                                ),
-                              )
+                            children: [
+                              Image.asset("assets/25.png"),
                             ],
                           ),
                         ),
@@ -81,7 +68,7 @@ class _RentDurationState extends State<RentDuration> {
                   SizedBox(
                     width: 5,
                   ),
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -111,48 +98,37 @@ class _RentDurationState extends State<RentDuration> {
                           )
                         ],
                       ),
-                      SizedBox(
-                        height: 7,
-                      ),
+                      SizedBox(height: 7),
                       Text(
                         "Power",
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
+                      SizedBox(height: 5),
                       Row(
                         children: [
                           Text(
                             "89%",
                             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 3,
                           ),
-                          Image(
-                              image: AssetImage(
-                            "Battery90.png",
-                          ))
+                          Image.asset("assets/Battery90.png")
                         ],
                       ),
                     ],
                   )
                 ],
               ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 "Type of Rent",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
-                height: 5,
-              ),
+              const SizedBox(height: 5),
               DropdownButtonFormField<String>(
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -178,9 +154,7 @@ class _RentDurationState extends State<RentDuration> {
                   });
                 },
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               Text(
                 "Cost",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -189,9 +163,7 @@ class _RentDurationState extends State<RentDuration> {
                 "RP300.000/meter",
                 style: TextStyle(fontSize: 18, color: Color(0xFFA2C90C)),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               Text(
                 "Payment Method",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
