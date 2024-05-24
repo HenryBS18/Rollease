@@ -17,7 +17,7 @@ class _SidebarState extends State<Sidebar> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.7388,
                 height: 132,
                 child: Row(
@@ -29,9 +29,9 @@ class _SidebarState extends State<Sidebar> {
                   ],
                 ),
               ),
-              SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.only(left: 16),
+              const SizedBox(height: 8),
+              const Padding(
+                padding: EdgeInsets.only(left: 16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,20 +43,44 @@ class _SidebarState extends State<Sidebar> {
                   ],
                 ),
               ),
-              SizedBox(height: 16),
-              Divider(),
-              ListTile(leading: Icon(Icons.person), title: Text("Profile"), onTap: () {}),
-              Divider(),
-              ListTile(leading: Icon(Icons.payment), title: Text("Payment"), onTap: () {}),
-              Divider(),
-              ListTile(leading: Icon(Icons.history), title: Text("Riding History"), onTap: () {}),
-              Divider(),
-              ListTile(leading: Icon(Icons.airplane_ticket), title: Text("Promos"), onTap: () {}),
-              Divider(),
-              ListTile(leading: Icon(Icons.assignment_turned_in), title: Text("Terms & Conditions"), onTap: () {}),
-              Divider(),
-              ListTile(leading: Icon(Icons.settings), title: Text("Settings"), onTap: () {}),
-              Divider(),
+              const SizedBox(height: 16),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.person),
+                title: const Text("Profile"),
+                onTap: () {},
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.payment),
+                title: const Text("Payment"),
+                onTap: () {},
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.history),
+                title: const Text("Riding History"),
+                onTap: () {},
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.airplane_ticket),
+                title: const Text("Promos"),
+                onTap: () {},
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.assignment_turned_in),
+                title: const Text("Terms & Conditions"),
+                onTap: () {},
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.settings),
+                title: const Text("Settings"),
+                onTap: () {},
+              ),
+              const Divider(),
             ],
           )
         ],
