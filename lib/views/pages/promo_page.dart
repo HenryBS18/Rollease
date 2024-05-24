@@ -1,13 +1,13 @@
 part of 'pages.dart';
 
-class PromoScreen extends StatefulWidget {
-  const PromoScreen({Key? key}) : super(key: key);
+class PromoPage extends StatefulWidget {
+  const PromoPage({Key? key}) : super(key: key);
 
   @override
-  _PromoScreenState createState() => _PromoScreenState();
+  _PromoPageState createState() => _PromoPageState();
 }
 
-class _PromoScreenState extends State<PromoScreen> {
+class _PromoPageState extends State<PromoPage> {
   List<String> promoList = [
     "Discount Rp10.000",
     "Discount Rp5.000",
@@ -63,11 +63,11 @@ class _PromoScreenState extends State<PromoScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 5),
+              const SizedBox(height: 4),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -91,20 +91,18 @@ class _PromoScreenState extends State<PromoScreen> {
                   ),
                 ],
               ),
-
-              // Add a Container for the search bar section
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.grey[200],
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: TextField(
                     onChanged: (value) {
                       filterPromo(value);
                     },
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "Enter Promo Here",
                       border: InputBorder.none,
                       icon: Icon(Icons.search),
@@ -112,29 +110,28 @@ class _PromoScreenState extends State<PromoScreen> {
                   ),
                 ),
               ),
-
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ListView.builder(
                 shrinkWrap: true,
                 itemCount: filteredList.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFA2C90C))),
                     child: ListTile(
-                      leading: Image.asset('disc1.png'),
+                      leading: Image.asset('assets/disc1.png'),
                       title: Text(
                         filteredList[index],
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(
                         promoSubtitleList[index],
-                        style: TextStyle(fontSize: 11),
+                        style: const TextStyle(fontSize: 11),
                       ),
                       trailing: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFFA2C90C),
+                          backgroundColor: const Color(0xFFA2C90C),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),

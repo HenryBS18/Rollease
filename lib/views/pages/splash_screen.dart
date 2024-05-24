@@ -6,17 +6,17 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Tunggu selama 3 detik sebelum berpindah ke OnBoardingScreen
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => OnBoardingPage()),
-      );
-    });
+    // Future.delayed(Duration(seconds: 3), () {
+    //   Navigator.of(context).pushReplacement(
+    //     MaterialPageRoute(builder: (_) => OnBoardingPage()),
+    //   );
+    // });
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: Image.asset(
-          "images/LogoUtama.png",
+          "assets/LogoUtama.png",
           width: MediaQuery.of(context).size.width * 0.8,
         ),
       ),

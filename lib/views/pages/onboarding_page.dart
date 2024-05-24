@@ -76,7 +76,7 @@ class _OnBoardingPage extends State<OnBoardingPage> {
                       top: 66,
                       left: 21,
                       child: Image.asset(
-                        "LogoUtama.png",
+                        "assets/LogoUtama.png",
                         width: 89,
                         height: 74,
                       ),
@@ -226,19 +226,19 @@ class Items {
 
 List<Items> listOfItems = [
   Items(
-    img: "Icon3.png",
+    img: "assets/Icon3.png",
     title: "Pesan melalui aplikasi",
   ),
   Items(
-    img: "Icon4.png",
+    img: "assets/Icon4.png",
     title: "Pilih tipe kendaraan",
   ),
   Items(
-    img: "Icon4.png",
+    img: "assets/Icon4.png",
     title: "Scan QR Code",
   ),
   Items(
-    img: "icon4(1).png",
+    img: "assets/icon4(1).png",
     title: "Mengendarai",
   ),
 ];
