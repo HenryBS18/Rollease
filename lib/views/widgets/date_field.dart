@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
+part of 'widgets.dart';
 
 class DateField extends StatefulWidget {
   const DateField({Key? key}) : super(key: key);
@@ -28,8 +26,7 @@ class _DateFieldState extends State<DateField> {
 
     if (pickedDate != null) {
       setState(() {
-        _textEditingController.text =
-            DateFormat('dd/MM/yyyy').format(pickedDate);
+        _textEditingController.text = DateFormat('dd/MM/yyyy').format(pickedDate);
       });
     }
   }
@@ -39,7 +36,6 @@ class _DateFieldState extends State<DateField> {
     return PrimaryContainer(
       radius: 10,
       child: TextFormField(
-
         readOnly: true,
         style: const TextStyle(fontSize: 16, color: Colors.black),
         controller: _textEditingController,
@@ -57,31 +53,6 @@ class _DateFieldState extends State<DateField> {
           hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
         ),
       ),
-    );
-  }
-}
-
-class PrimaryContainer extends StatelessWidget {
-  final Widget child;
-  final double? radius;
-  final Color? color;
-  const PrimaryContainer({
-    Key? key,
-    this.radius,
-    this.color,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(radius ?? 30),
-        color: Colors.white,
-      border: Border.all(color:  Color(0xFFA2C90C)),
-      ),
-      child: child,
     );
   }
 }

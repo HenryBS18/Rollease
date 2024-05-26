@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:rollease/models/OnBoarding.dart';
-import 'package:rollease/views/widgets/type_of_rent.dart';
-import 'package:rollease/views/widgets/toggle_button.dart';
+part of 'pages.dart';
 
 class TutorialBookingPage extends StatefulWidget {
   const TutorialBookingPage({Key? key}) : super(key: key);
@@ -80,19 +77,24 @@ class _TutorialBookingPageState extends State<TutorialBookingPage> {
             ),
           ),
           const SizedBox(height: 16),
-          ToggleButton(
-            width: 220,
-            height: 50,
-            isLeftActive: isLeftActive,
-            leftDescription: "Argo",
-            rightDescription: "Rent",
-            toggleColor: Colors.green,
-            toggleBackgroundColor: const Color.fromARGB(255, 230, 230, 230),
-            toggleBorderColor: const Color.fromARGB(255, 255, 255, 255),
-            activeTextColor: Colors.white,
-            inactiveTextColor: const Color.fromARGB(255, 164, 164, 164),
-            onLeftToggle: toggleToLeft,
-            onRightToggle: toggleToRight,
+          SlidingSwitch(
+            value: isLeftActive,
+            onChanged: (value) {
+              setState(() {
+                isLeftActive = !value;
+              });
+            },
+            onTap: () {},
+            onDoubleTap: () {},
+            onSwipe: () {},
+            textOff: "Argo",
+            textOn: "Rent",
+            contentSize: 16,
+            background: const Color(0xffB6C4D4),
+            buttonColor: const Color(0xffA2C90C),
+            colorOff: Colors.white,
+            colorOn: Colors.white,
+            inactiveColor: Colors.white,
           ),
           const SizedBox(height: 8),
           isLeftActive ? TypeOfRent(onBoardingList: argoOnBoardingList) : TypeOfRent(onBoardingList: rentOnBoardingList),

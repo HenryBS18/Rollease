@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:rollease/models/DotsDecorator.dart';
+part of 'widgets.dart';
 
 class DotsIndicator extends StatelessWidget {
   final int dotsCount;

@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:rollease/models/DotsDecorator.dart';
-import 'package:rollease/models/OnBoarding.dart';
-import 'package:rollease/views/widgets/dots_indicator.dart';
-import 'package:rollease/views/widgets/onboarding_card.dart';
+part of 'widgets.dart';
 
 class TypeOfRent extends StatefulWidget {
   final List<OnBoarding> onBoardingList;
