@@ -1,40 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:rollease/provider/navigation_provider.dart';
+import 'package:rollease/views/pages/profile_page.dart';
+import 'package:rollease/views/widgets/typeofrent1.dart';
+import 'package:rollease/views/widgets/typeofrent2.dart';
+import 'package:rollease/views/widgets/togglebutton.dart';
 
-void main() {
-  runApp(const MyApp());
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  static final String title = 'Type of Rent';
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+        create: (context) => NavigationProvider(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(primarySwatch: Colors.deepOrange),
+          home: MainPage(),
+        ),
+      );
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class MainPage extends StatefulWidget {
+  @override
+  _MainPageState createState() => _MainPageState();
+}
 
-  void _incrementCounter() {
+class _MainPageState extends State<MainPage> {
+  bool isLeftActive = true;
+
+  void toggleToLeft() {
     setState(() {
-      _counter++;
+      isLeftActive = true;
+    });
+  }
+
+  void toggleToRight() {
+    setState(() {
+      isLeftActive = false;
     });
   }
 
@@ -42,27 +56,30 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ToggleButton(
+              width: 200,
+              height: 50,
+              isLeftActive: isLeftActive,
+              leftDescription: "Argo",
+              rightDescription: "Rent",
+              toggleColor: Colors.green,
+              toggleBackgroundColor: const Color.fromARGB(255, 230, 230, 230),
+              toggleBorderColor: const Color.fromARGB(255, 255, 255, 255),
+              activeTextColor: Colors.white,
+              inactiveTextColor: const Color.fromARGB(255, 164, 164, 164),
+              onLeftToggle: toggleToLeft,
+              onRightToggle: toggleToRight,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+          ),
+          Expanded(
+            child: isLeftActive ? TypeOfRent1() : TypeOfRent2(),
+          ),
+        ],
       ),
     );
   }
