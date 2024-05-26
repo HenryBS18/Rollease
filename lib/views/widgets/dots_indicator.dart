@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:rollease/models/DotsDecorator.dart';
 
 class DotsIndicator extends StatelessWidget {
   final int dotsCount;
-  final double position;
+  final int position;
   final DotsDecorator decorator;
 
-  const DotsIndicator({
-    required this.dotsCount,
-    required this.position,
-    required this.decorator,
-  });
+  const DotsIndicator({super.key, required this.dotsCount, required this.position, required this.decorator});
 
   @override
   Widget build(BuildContext context) {
@@ -29,24 +26,9 @@ class DotsIndicator extends StatelessWidget {
       height: isActive ? decorator.activeSize.height : decorator.size.height,
       margin: const EdgeInsets.symmetric(horizontal: 4),
       decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.circular(5),
+        shape: BoxShape.circle,
         color: isActive ? decorator.activeColor : decorator.color,
       ),
     );
   }
-}
-
-class DotsDecorator {
-  final Color color;
-  final Size size;
-  final Color activeColor;
-  final Size activeSize;
-
-  const DotsDecorator({
-    required this.color,
-    required this.size,
-    required this.activeColor,
-    required this.activeSize, required RoundedRectangleBorder activeShape,
-  });
 }
