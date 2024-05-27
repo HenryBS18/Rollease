@@ -4,7 +4,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
@@ -12,7 +11,6 @@ import 'package:rollease/models/OnBoarding.dart';
 import 'package:rollease/models/station.dart';
 import 'package:rollease/utils/utils.dart';
 import 'package:rollease/views/widgets/item_profile.dart';
-import 'package:rollease/views/widgets/rate.dart';
 import 'package:rollease/views/widgets/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
