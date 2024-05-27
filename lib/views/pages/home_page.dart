@@ -150,7 +150,7 @@ class _HomePageState extends State<HomePage> {
               bottom: 0,
               child: DraggableScrollableSheet(
                 initialChildSize: 0.4,
-                maxChildSize: 0.82,
+                maxChildSize: 0.84,
                 minChildSize: 0.4,
                 expand: true,
                 snap: true,
@@ -201,7 +201,8 @@ class _HomePageState extends State<HomePage> {
                                             "Nearest Station",
                                             style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: 18,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
                                               decoration: TextDecoration.none,
                                             ),
                                           ),
