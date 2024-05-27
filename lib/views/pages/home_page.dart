@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         key: _scaffoldState,
-        drawer: Sidebar(),
+        drawer: const Sidebar(),
         body: Stack(
           children: [
             FlutterMap(
