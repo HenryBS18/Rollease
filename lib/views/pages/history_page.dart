@@ -1,7 +1,7 @@
 part of 'pages.dart';
 
-class History extends StatelessWidget {
-  const History({Key? key}) : super(key: key);
+class HistoryPage extends StatelessWidget {
+  const HistoryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
