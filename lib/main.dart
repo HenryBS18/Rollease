@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/tutorial',
+      initialRoute: '/home',
       routes: {
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomePage(),
@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
         '/rent': (context) => const RentDuration(),
         '/tnc': (context) => const TermsAndConditonsPage(),
         '/onBoarding': (context) => const OnBoardingPage(),
-        '/tutorial': (context) => const TutorialBookingPage()
+        '/tutorial': (context) => const TutorialBookingPage(),
+        '/profile': (context) => const ProfilePage(),
+        '/history': (context) => const HistoryPage(),
       },
     );
   }
