@@ -4,15 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rollease/views/pages/login.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-
-class OnBoarding extends StatefulWidget {
-  const OnBoarding({Key? key}) : super(key: key);
+class SplashRent extends StatefulWidget {
+  const SplashRent({Key? key}) : super(key: key);
 
   @override
-  State<OnBoarding> createState() => _OnBoarding();
+  State<SplashRent> createState() => _OnBoarding();
 }
 
-class _OnBoarding extends State<OnBoarding> {
+class _OnBoarding extends State<SplashRent> {
   PageController pageController = PageController(initialPage: 0);
   int currentIndex = 0;
 
@@ -26,8 +25,43 @@ class _OnBoarding extends State<OnBoarding> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_sharp,
+            size: 20,
+            color: Colors.black,
+          ),
+        ),
+        title: const Text(
+          "Back",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+      ),
       body: Column(
         children: [
+          Container(
+            color: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Text(
+              "how to ride??",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           Expanded(
             flex: 3,
             child: PageView.builder(
@@ -69,21 +103,13 @@ class _OnBoarding extends State<OnBoarding> {
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.poppins(
                                   color: Colors.black,
-                                  fontSize: 26,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
                         ],
-                      ),
-                    ),
-                    Positioned(
-                      top: 66,
-                      left: 21,
-                      child: Image.asset(
-                        "LogoUtama.png",
-                        width: 89,
-                        height: 74,
                       ),
                     ),
                   ],
@@ -94,8 +120,7 @@ class _OnBoarding extends State<OnBoarding> {
           Expanded(
             flex: 1,
             child: Padding(
-              padding:
-                  const EdgeInsets.only(bottom: 45), // Atur jarak dengan bottom
+              padding: const EdgeInsets.only(bottom: 45),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -108,8 +133,8 @@ class _OnBoarding extends State<OnBoarding> {
                       dotWidth: 10.0,
                       dotHeight: 10.0,
                       expansionFactor: 3.8,
-                      dotColor: Color(0xFFA2C90C, ),
-                      activeDotColor: Color( 0xFFA2C90C),
+                      dotColor: Color(0xFFA2C90C),
+                      activeDotColor: Color(0xFFA2C90C),
                     ),
                     onDotClicked: (newIndex) {
                       setState(() {
@@ -127,12 +152,9 @@ class _OnBoarding extends State<OnBoarding> {
                       ? Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 24),
                           child: PrimaryButton(
-                            onTap: () { Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => LoginScreen()), 
-                              );
-                             
+                            onTap: () {
+                            
+                               
                             },
                             text: 'Get Started',
                           ),
@@ -141,10 +163,9 @@ class _OnBoarding extends State<OnBoarding> {
                           padding: const EdgeInsets.symmetric(horizontal: 50),
                           child: PrimaryButton(
                             onTap: () {
-                              
                               setState(() {
                                 pageController.animateToPage(
-                                  3,
+                                  currentIndex + 1,
                                   duration: const Duration(milliseconds: 1000),
                                   curve: Curves.fastOutSlowIn,
                                 );
@@ -178,7 +199,7 @@ class PrimaryButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        backgroundColor: Color(0xFFA2C90C,),
+        backgroundColor: const Color(0xFFA2C90C),
       ),
       child: Text(
         text,
@@ -230,19 +251,27 @@ class Items {
 
 List<Items> listOfItems = [
   Items(
-    img: "Icon3.png",
-    title: "Pesan melalui aplikasi",
+    img: "TORArgo1.png",
+    title: "Unlock the electric vehicle",
   ),
   Items(
-    img: "Icon4.png",
-    title: "Pilih tipe kendaraan",
+    img: "Artboard5.png",
+    title: "Put helmet on",
   ),
   Items(
-    img: "Icon4.png",
-    title: "Scan QR Code",
+    img: "TORArgo2.png",
+    title: "Start riding",
   ),
   Items(
-    img: "icon4(1).png",
-    title: "Mengendarai",
+    img: "Artboard8.png",
+    title: "Adjust the speed and stay in designated areas",
+  ),
+  Items(
+    img: "Artboard9.png",
+    title: "Always check the time limit of your rent vehicle",
+  ),
+  Items(
+    img: "Artboard6.png",
+    title: "Return the vehicle at the nearest station",
   ),
 ];

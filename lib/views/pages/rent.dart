@@ -138,7 +138,7 @@ class _RentDurationState extends State<RentDuration> {
                             ),
                             Image(
                                 image: AssetImage(
-                              "images/Battery90.png",
+                              "Battery90.png",
                             ))
                           ],
                         ),
