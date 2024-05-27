@@ -52,31 +52,41 @@ class _SidebarState extends State<Sidebar> {
                     ListTile(
                       leading: const Icon(Icons.person),
                       title: const Text("Profile"),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, '/profile');
+                      },
                     ),
                     const Divider(),
                     ListTile(
                       leading: const Icon(Icons.payment),
                       title: const Text("Payment"),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, '/payment');
+                      },
                     ),
                     const Divider(),
                     ListTile(
                       leading: const Icon(Icons.history),
                       title: const Text("Riding History"),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, '/history');
+                      },
                     ),
                     const Divider(),
                     ListTile(
                       leading: const Icon(Icons.confirmation_num),
                       title: const Text("Promos"),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, '/promo');
+                      },
                     ),
                     const Divider(),
                     ListTile(
                       leading: const Icon(Icons.file_copy),
                       title: const Text("Terms & Conditions"),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, '/tnc');
+                      },
                     ),
                     const Divider(),
                     ListTile(
