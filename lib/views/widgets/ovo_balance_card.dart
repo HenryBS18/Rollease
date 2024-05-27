@@ -11,7 +11,7 @@ class _OvoBalanceCardState extends State<OvoBalanceCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
+      height: 86,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(

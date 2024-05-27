@@ -13,7 +13,7 @@ class _DebitCardState extends State<DebitCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 74,
+      height: 76,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
