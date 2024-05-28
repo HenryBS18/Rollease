@@ -1,8 +1,9 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:rollease/models/DotsDecorator.dart';
-import 'package:rollease/models/OnBoarding.dart';
+import 'package:rollease/models/dots_decorator.dart';
+import 'package:rollease/models/history.dart';
+import 'package:rollease/models/onboarding.dart';
+import 'package:rollease/utils/custom_colors.dart';
 
 part 'sliding_switch.dart';
 part 'sidebar.dart';
@@ -11,9 +12,13 @@ part 'ovo_balance_card.dart';
 part 'add_new_debit_card.dart';
 part 'debit_card.dart';
 part 'debit_payment_menu.dart';
-part 'login_button.dart';
 part 'type_of_rent.dart';
 part 'onboarding_card.dart';
 part 'dots_indicator.dart';
 part 'date_field.dart';
 part 'primary_container.dart';
+part 'password_field.dart';
+part 'text_field_with_icon.dart';
+part 'primary_button.dart';
+part 'primary_icon_button.dart';
+part 'history_card.dart';
