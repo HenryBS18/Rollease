@@ -1,15 +1,42 @@
 part of 'pages.dart';
 
-class OnBoardingPage extends StatefulWidget {
-  const OnBoardingPage({Key? key}) : super(key: key);
+class HowToRidePage extends StatefulWidget {
+  const HowToRidePage({Key? key}) : super(key: key);
 
   @override
-  State<OnBoardingPage> createState() => _OnBoardingPage();
+  State<HowToRidePage> createState() => _OnBoarding();
 }
 
-class _OnBoardingPage extends State<OnBoardingPage> {
+class _OnBoarding extends State<HowToRidePage> {
   PageController pageController = PageController(initialPage: 0);
   int currentIndex = 0;
+
+  List<Items> listOfItems = [
+    Items(
+      img: "assets/Artboard6.png",
+      title: "Unlock the electric vehicle",
+    ),
+    Items(
+      img: "assets/Artboard5.png",
+      title: "Put helmet on",
+    ),
+    Items(
+      img: "assets/TORArgoo2.png",
+      title: "Start riding",
+    ),
+    Items(
+      img: "assets/Artboard8.png",
+      title: "Adjust the speed and stay in designated areas",
+    ),
+    Items(
+      img: "assets/Artboard9.png",
+      title: "Always check the time limit of your rent vehicle",
+    ),
+    Items(
+      img: "assets/TORArgo1.png",
+      title: "Return the vehicle at the nearest station",
+    ),
+  ];
 
   @override
   void dispose() {
@@ -21,8 +48,43 @@ class _OnBoardingPage extends State<OnBoardingPage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_sharp,
+            size: 20,
+            color: Colors.black,
+          ),
+        ),
+        title: const Text(
+          "Back",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+      ),
       body: Column(
         children: [
+          Container(
+            color: Colors.white,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Text(
+              "how to ride??",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           Expanded(
             flex: 3,
             child: PageView.builder(
@@ -64,21 +126,13 @@ class _OnBoardingPage extends State<OnBoardingPage> {
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.poppins(
                                   color: Colors.black,
-                                  fontSize: 26,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
                         ],
-                      ),
-                    ),
-                    Positioned(
-                      top: 66,
-                      left: 21,
-                      child: Image.asset(
-                        "assets/LogoUtama.png",
-                        width: 89,
-                        height: 74,
                       ),
                     ),
                   ],
@@ -89,7 +143,7 @@ class _OnBoardingPage extends State<OnBoardingPage> {
           Expanded(
             flex: 1,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 45), // Atur jarak dengan bottom
+              padding: const EdgeInsets.only(bottom: 45),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -102,9 +156,7 @@ class _OnBoardingPage extends State<OnBoardingPage> {
                       dotWidth: 10.0,
                       dotHeight: 10.0,
                       expansionFactor: 3.8,
-                      dotColor: Color(
-                        0xFFA2C90C,
-                      ),
+                      dotColor: Color(0xFFA2C90C),
                       activeDotColor: Color(0xFFA2C90C),
                     ),
                     onDotClicked: (newIndex) {
@@ -123,9 +175,9 @@ class _OnBoardingPage extends State<OnBoardingPage> {
                       ? Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 24),
                           child: PrimaryButton(
-                            title: "Get started",
+                            title: "Start",
                             onTap: () {
-                              Navigator.pushReplacementNamed(context, '/login');
+                              Navigator.pushNamed(context, '/end');
                             },
                           ),
                         )
@@ -136,7 +188,7 @@ class _OnBoardingPage extends State<OnBoardingPage> {
                             onTap: () {
                               setState(() {
                                 pageController.animateToPage(
-                                  3,
+                                  currentIndex + 1,
                                   duration: const Duration(milliseconds: 1000),
                                   curve: Curves.fastOutSlowIn,
                                 );
@@ -154,58 +206,3 @@ class _OnBoardingPage extends State<OnBoardingPage> {
     );
   }
 }
-
-class CustomAnimatedWidget extends StatelessWidget {
-  final int index;
-  final int delay;
-  final Widget child;
-  const CustomAnimatedWidget({
-    Key? key,
-    required this.index,
-    required this.delay,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    if (index == 1) {
-      return FadeInDown(
-        delay: Duration(milliseconds: delay),
-        child: child,
-      );
-    }
-    return FadeInUp(
-      delay: Duration(milliseconds: delay),
-      child: child,
-    );
-  }
-}
-
-class Items {
-  final String img;
-  final String title;
-
-  Items({
-    required this.img,
-    required this.title,
-  });
-}
-
-List<Items> listOfItems = [
-  Items(
-    img: "assets/Icon3.png",
-    title: "Pesan melalui aplikasi",
-  ),
-  Items(
-    img: "assets/Icon4.png",
-    title: "Pilih tipe kendaraan",
-  ),
-  Items(
-    img: "assets/Icon4.png",
-    title: "Scan QR Code",
-  ),
-  Items(
-    img: "assets/Icon4(1).png",
-    title: "Mengendarai",
-  ),
-];

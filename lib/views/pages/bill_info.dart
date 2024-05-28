@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+part of 'pages.dart';
 
-class ReceiptPage extends StatelessWidget {
+class BillInfo extends StatelessWidget {
+  const BillInfo({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     // Mengambil waktu sekarang
@@ -140,7 +141,6 @@ class ReceiptPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 20),
                         Container(
                           width: double.infinity,
                           child: OutlinedButton.icon(
@@ -156,9 +156,10 @@ class ReceiptPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height: 20),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/home');
+                          },
                           style: ElevatedButton.styleFrom(
                             primary: Colors.green,
                             padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),

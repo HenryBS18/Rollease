@@ -18,7 +18,7 @@ class _PaymentPageState extends State<PaymentPage> {
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () {
-            // Navigator.pop(context);
+            Navigator.pop(context);
           },
           icon: const Icon(
             Icons.arrow_back_sharp,

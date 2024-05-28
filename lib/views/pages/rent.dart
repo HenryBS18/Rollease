@@ -168,7 +168,14 @@ class _RentDurationState extends State<RentDuration> {
                 "Payment Method",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              itemProfile("OVO", Icons.wallet)
+              itemProfile("OVO", Icons.wallet),
+              SizedBox(height: 32),
+              PrimaryButton(
+                title: "Book",
+                onTap: () {
+                  Navigator.pushNamed(context, '/scan');
+                },
+              )
             ],
           ),
         ),
