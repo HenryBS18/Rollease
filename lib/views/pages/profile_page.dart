@@ -1,154 +1,191 @@
 part of 'pages.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  final FocusNode _focusNodeName = FocusNode();
+  final FocusNode _focusNodeEmail = FocusNode();
+  final FocusNode _focusNodeBirthDate = FocusNode();
+
+  bool isEdit = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNodeName.addListener(_onFocusChange);
+    _focusNodeEmail.addListener(_onFocusChange);
+    _focusNodeBirthDate.addListener(_onFocusChange);
+  }
+
+  void _onFocusChange() {
+    setState(() {});
+  }
+
+  void _unfocusAllFields() {
+    _focusNodeName.unfocus();
+    _focusNodeEmail.unfocus();
+    _focusNodeBirthDate.unfocus();
+  }
+
+  @override
+  void dispose() {
+    _focusNodeName.removeListener(_onFocusChange);
+    _focusNodeEmail.removeListener(_onFocusChange);
+    _focusNodeBirthDate.removeListener(_onFocusChange);
+
+    _focusNodeName.dispose();
+    _focusNodeEmail.dispose();
+    _focusNodeBirthDate.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(
-            Icons.arrow_back_sharp,
-            size: 20,
-            color: Colors.black,
+    return GestureDetector(
+      onTap: _unfocusAllFields,
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_sharp,
+              size: 20,
+              color: Colors.black,
+            ),
+          ),
+          title: const Text(
+            "Back",
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
           ),
         ),
-        title: Text(
-          "Back",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: 5),
-              Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Color(0xFFA2C90C),
-                    width: 3,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 24, right: 24, top: 24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.person_outline,
+                      color: CustomColors.primary,
+                      size: 32,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      "Profile",
+                      style: TextStyle(fontSize: 24),
+                    )
+                  ],
+                ),
+                SizedBox(height: 32),
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Color(0xFFA2C90C),
+                      width: 8,
+                    ),
+                  ),
+                  child: CircleAvatar(
+                    radius: 40,
+                    backgroundColor: Colors.transparent,
+                    child: const Icon(
+                      Icons.person_outline,
+                      size: 48,
+                      color: Color(0xFFA2C90C),
+                    ),
                   ),
                 ),
-                child: CircleAvatar(
-                  radius: 40,
-                  backgroundColor: Colors.transparent,
-                  child: Icon(
-                    Icons.person,
-                    size: 40,
-                    color: Color(0xFFA2C90C),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Full Name',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  itemProfile(
-                    'Hendry Bintang Setiawan',
-                    CupertinoIcons.person,
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'E-mail Address',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  itemProfile(
-                    'hendry@gmail.com',
-                    CupertinoIcons.mail,
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'Birth of Date',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                  SizedBox(height: 5),
-                  itemProfile(
-                    '11/1/2003',
-                    CupertinoIcons.calendar,
-                  ),
-                  SizedBox(height: 20),
-                  FadeInUp(
-                    duration: Duration(milliseconds: 1400),
-                    child: Center(
-                      // Center the Edit button
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          MaterialButton(
-                            height: 45,
-                            minWidth: 130,
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => EditProfilePage(),
-                                ),
-                              );
-                            },
-                            color: Color(0xFFA2C90C),
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(9),
-                            ),
-                            child: Text(
-                              "Edit",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            left: 0,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFFA2C90C),
-                              ),
-                              padding: EdgeInsets.all(8),
-                              child: Icon(
-                                Icons.edit_square,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
+                SizedBox(height: 24),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Full Name',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    SizedBox(height: 2),
+                    TextFieldWithIcon(
+                      value: "Henry Bintang Setiawan",
+                      icon: CupertinoIcons.person,
+                      enabled: isEdit,
+                      focusNode: _focusNodeName,
+                    ),
+                    SizedBox(height: 24),
+                    Text(
+                      'Email Address',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 2),
+                    TextFieldWithIcon(
+                      value: "henry@gmail.com",
+                      icon: CupertinoIcons.mail,
+                      enabled: isEdit,
+                      focusNode: _focusNodeEmail,
+                    ),
+                    SizedBox(height: 24),
+                    Text(
+                      'Birth of Date',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 2),
+                    TextFieldWithIcon(
+                      value: "12/1/2003",
+                      icon: CupertinoIcons.calendar,
+                      enabled: isEdit,
+                      focusNode: _focusNodeBirthDate,
+                    ),
+                    SizedBox(height: 32),
+                    Center(
+                      child: FadeInUp(
+                          duration: Duration(milliseconds: 1400),
+                          child: !isEdit
+                              ? PrimaryIconButton(
+                                  title: "Edit",
+                                  icon: Icons.edit_document,
+                                  onTap: () {
+                                    setState(() {
+                                      isEdit = true;
+                                    });
+                                  },
+                                )
+                              : PrimaryIconButton(
+                                  title: "Save",
+                                  icon: Icons.save,
+                                  onTap: () {
+                                    setState(() {
+                                      isEdit = false;
+                                    });
+                                  },
+                                )),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

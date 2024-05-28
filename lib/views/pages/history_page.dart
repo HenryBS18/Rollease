@@ -1,7 +1,20 @@
 part of 'pages.dart';
 
-class HistoryPage extends StatelessWidget {
+class HistoryPage extends StatefulWidget {
   const HistoryPage({Key? key}) : super(key: key);
+
+  @override
+  State<HistoryPage> createState() => _HistoryPageState();
+}
+
+class _HistoryPageState extends State<HistoryPage> {
+  List<History> history = [
+    History("Eletric Scooter", "20 April 2023", "Argo", 100, 43000),
+    History("Eletric Bike", "23 April 2023", "Rent", 50, 72000),
+    History("Eletric Scooter", "25 April 2023", "Argo", 20, 25000),
+    History("Eletric Bike", "28 April 2023", "Rent", 75, 74000),
+    History("Eletric Scooter", "2 Mei 2023", "Argo", 23, 105000),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +28,7 @@ class HistoryPage extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back_sharp,
-            size: 20,
+            size: 24,
             color: Colors.black,
           ),
         ),
@@ -28,227 +41,45 @@ class HistoryPage extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 5),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.transparent,
-                    child: Icon(
-                      Icons.history,
-                      size: 30,
-                      color: Color(0xFFA2C90C),
-                    ),
-                  ),
-                  SizedBox(width: 0),
-                  Text(
-                    "Riding History",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFA2C90C))),
-                child: ListTile(
-                  leading: Image.asset('assets/25.png'),
-                  title: Text("Electric Scooter", style: TextStyle(fontWeight: FontWeight.bold)),
-                  subtitle: const Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          "20 April 2023",
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                      VerticalDivider(
-                        width: 1,
-                      ),
-                      SizedBox(width: 10),
-                      Flexible(
-                        child: Text(
-                          "Argo type",
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                      VerticalDivider(
-                        width: 1,
-                      ),
-                      SizedBox(width: 10),
-                      Flexible(
-                        child: Text(
-                          "100 minutes",
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                      VerticalDivider(
-                        width: 1,
-                      ),
-                      SizedBox(width: 10),
-                      Text(
-                        "Rp43.000",
-                        style: TextStyle(fontSize: 12, color: Color(0xFFA2C90C)),
-                      ),
-                    ],
+      body: Padding(
+        padding: EdgeInsets.only(left: 24, right: 24, top: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(
+                  Icons.history,
+                  size: 32,
+                  color: CustomColors.primary,
+                ),
+                SizedBox(width: 8),
+                Text(
+                  "Riding History",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-              SizedBox(height: 10),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFA2C90C))),
-                child: ListTile(
-                    leading: Image.asset('assets/102.png'),
-                    title: Text("Electric Bike", style: TextStyle(fontWeight: FontWeight.bold)),
-                    subtitle: const Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            "22 April 2023",
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ),
-                        VerticalDivider(
-                          width: 1,
-                        ),
-                        SizedBox(width: 10),
-                        Flexible(
-                          child: Text(
-                            "Rent type",
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ),
-                        VerticalDivider(
-                          width: 1,
-                        ),
-                        SizedBox(width: 10),
-                        Flexible(
-                          child: Text(
-                            "90 minutes",
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ),
-                        VerticalDivider(
-                          width: 1,
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          "Rp73.000",
-                          style: TextStyle(fontSize: 12, color: Color(0xFFA2C90C)),
-                        ),
-                      ],
-                    )),
-              ),
-              SizedBox(height: 10),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFA2C90C))),
-                child: ListTile(
-                  leading: Image.asset('assets/25.png'),
-                  title: Text("Electric Scooter", style: TextStyle(fontWeight: FontWeight.bold)),
-                  subtitle: const Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          "20 April 2023",
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                      VerticalDivider(
-                        width: 1,
-                      ),
-                      SizedBox(width: 10),
-                      Flexible(
-                        child: Text(
-                          "Argo type",
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                      VerticalDivider(
-                        width: 1,
-                      ),
-                      SizedBox(width: 10),
-                      Flexible(
-                        child: Text(
-                          "100 minutes",
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ),
-                      VerticalDivider(
-                        width: 1,
-                      ),
-                      SizedBox(width: 10),
-                      Text(
-                        "Rp43.000",
-                        style: TextStyle(fontSize: 12, color: Color(0xFFA2C90C)),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFA2C90C))),
-                child: ListTile(
-                    leading: Image.asset('assets/102.png'),
-                    title: Text(
-                      "Electric Bike",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+              ],
+            ),
+            SizedBox(height: 24),
+            Expanded(
+              child: ListView.builder(
+                itemCount: history.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: HistoryCard(
+                      history: history[index],
                     ),
-                    subtitle: const Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            "22 April 2023",
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ),
-                        VerticalDivider(
-                          width: 1,
-                        ),
-                        SizedBox(width: 10),
-                        Flexible(
-                          child: Text(
-                            "Rent type",
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ),
-                        VerticalDivider(
-                          width: 1,
-                        ),
-                        SizedBox(width: 10),
-                        Flexible(
-                          child: Text(
-                            "90 minutes",
-                            style: TextStyle(fontSize: 12),
-                          ),
-                        ),
-                        VerticalDivider(
-                          width: 1,
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          "Rp73.000",
-                          style: TextStyle(fontSize: 12, color: Color(0xFFA2C90C)),
-                        ),
-                      ],
-                    )),
+                  );
+                },
               ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );

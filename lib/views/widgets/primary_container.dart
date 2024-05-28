@@ -18,7 +18,7 @@ class PrimaryContainer extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius ?? 30),
         color: Colors.white,
-        border: Border.all(color: const Color(0xFFA2C90C)),
+        border: Border.all(color: Colors.black),
       ),
       child: child,
     );

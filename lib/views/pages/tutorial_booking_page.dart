@@ -106,7 +106,9 @@ class _TutorialBookingPageState extends State<TutorialBookingPage> {
                 ContinuousRectangleBorder(borderRadius: BorderRadius.circular(24)),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/rent');
+            },
             child: const SizedBox(
               width: 144,
               height: 48,

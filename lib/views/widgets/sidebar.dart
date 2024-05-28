@@ -92,7 +92,9 @@ class _SidebarState extends State<Sidebar> {
                     ListTile(
                       leading: const Icon(Icons.settings),
                       title: const Text("Settings"),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, '/');
+                      },
                     ),
                     const Divider(),
                   ],
