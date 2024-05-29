@@ -16,7 +16,7 @@ class _ScanQrPageState extends State<ScanQrPage> {
       ),
       body: ElevatedButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/howToRide');
+          Navigator.pushNamed(context, '/how-to-ride');
         },
         child: const Text("Next"),
       ),

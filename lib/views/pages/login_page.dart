@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     FadeInUp(
-                      duration: Duration(milliseconds: 1400),
+                      duration: const Duration(milliseconds: 1400),
                       child: PrimaryIconButton(
                         title: "Login",
                         icon: Icons.login,
