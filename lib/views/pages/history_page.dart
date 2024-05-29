@@ -32,7 +32,7 @@ class _HistoryPageState extends State<HistoryPage> {
             color: Colors.black,
           ),
         ),
-        title: Text(
+        title: const Text(
           "Back",
           style: TextStyle(
             color: Colors.black,
@@ -42,11 +42,11 @@ class _HistoryPageState extends State<HistoryPage> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(left: 24, right: 24, top: 8),
+        padding: const EdgeInsets.only(left: 24, right: 24, top: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(
@@ -65,7 +65,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 ),
               ],
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Expanded(
               child: ListView.builder(
                 itemCount: history.length,

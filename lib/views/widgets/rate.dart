@@ -9,7 +9,7 @@ class RateApp extends StatelessWidget {
     return FutureBuilder<void>(
       future: showFeedbackBottomSheet(context: context),
       builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-        return SizedBox.shrink(); // Mengembalikan widget kosong sementara menunggu tampilan bottom sheet.
+        return const SizedBox.shrink(); // Mengembalikan widget kosong sementara menunggu tampilan bottom sheet.
       },
     );
   }
@@ -69,7 +69,7 @@ class RateApp extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 RatingBar.builder(
                   glow: false,
                   allowHalfRating: true,

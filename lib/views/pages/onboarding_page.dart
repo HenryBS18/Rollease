@@ -19,7 +19,25 @@ class _OnBoardingPage extends State<OnBoardingPage> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    List<OnboardingItem> listOfItems = [
+      OnboardingItem(
+        img: "assets/Icon3.png",
+        title: "Pesan melalui aplikasi",
+      ),
+      OnboardingItem(
+        img: "assets/Icon4.png",
+        title: "Pilih tipe kendaraan",
+      ),
+      OnboardingItem(
+        img: "assets/Icon4.png",
+        title: "Scan QR Code",
+      ),
+      OnboardingItem(
+        img: "assets/Icon4(1).png",
+        title: "Mengendarai",
+      ),
+    ];
+
     return Scaffold(
       body: Column(
         children: [
@@ -41,9 +59,9 @@ class _OnBoardingPage extends State<OnBoardingPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            width: size.width,
-                            height: size.height / 2.5,
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height / 2.5,
                             child: CustomAnimatedWidget(
                               index: index,
                               delay: 100,
@@ -154,58 +172,3 @@ class _OnBoardingPage extends State<OnBoardingPage> {
     );
   }
 }
-
-class CustomAnimatedWidget extends StatelessWidget {
-  final int index;
-  final int delay;
-  final Widget child;
-  const CustomAnimatedWidget({
-    Key? key,
-    required this.index,
-    required this.delay,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    if (index == 1) {
-      return FadeInDown(
-        delay: Duration(milliseconds: delay),
-        child: child,
-      );
-    }
-    return FadeInUp(
-      delay: Duration(milliseconds: delay),
-      child: child,
-    );
-  }
-}
-
-class Items {
-  final String img;
-  final String title;
-
-  Items({
-    required this.img,
-    required this.title,
-  });
-}
-
-List<Items> listOfItems = [
-  Items(
-    img: "assets/Icon3.png",
-    title: "Pesan melalui aplikasi",
-  ),
-  Items(
-    img: "assets/Icon4.png",
-    title: "Pilih tipe kendaraan",
-  ),
-  Items(
-    img: "assets/Icon4.png",
-    title: "Scan QR Code",
-  ),
-  Items(
-    img: "assets/Icon4(1).png",
-    title: "Mengendarai",
-  ),
-];

@@ -18,10 +18,10 @@ class _PrimaryButtonState extends State<PrimaryButton> {
     return GestureDetector(
       onTap: widget.onTap,
       child: Container(
-        width: widget.width != null ? widget.width : 180,
-        height: widget.height != null ? widget.height : 60,
+        width: widget.width ?? 180,
+        height: widget.height ?? 60,
         decoration: BoxDecoration(
-          color: Color(0xffA2C90C),
+          color: const Color(0xffA2C90C),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
@@ -29,7 +29,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
           children: [
             Text(
               widget.title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 22,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

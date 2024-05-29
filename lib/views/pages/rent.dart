@@ -49,12 +49,12 @@ class _RentDurationState extends State<RentDuration> {
                     onTap: () {},
                     child: Card(
                       elevation: 0,
-                      color: Color(0x4DA2C90C),
+                      color: const Color(0x4DA2C90C),
                       child: SizedBox(
                         width: 137.57,
                         height: 180.44,
                         child: Padding(
-                          padding: EdgeInsets.all(15.0),
+                          padding: const EdgeInsets.all(15.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -65,24 +65,22 @@ class _RentDurationState extends State<RentDuration> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 5,
-                  ),
+                  const SizedBox(width: 5),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Scooter 1",
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 7,
                       ),
-                      Text(
+                      const Text(
                         "Station A",
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      Row(
+                      const Row(
                         children: [
                           Icon(
                             Icons.location_on_sharp,
@@ -98,15 +96,15 @@ class _RentDurationState extends State<RentDuration> {
                           )
                         ],
                       ),
-                      SizedBox(height: 7),
-                      Text(
+                      const SizedBox(height: 7),
+                      const Text(
                         "Power",
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Row(
                         children: [
-                          Text(
+                          const Text(
                             "89%",
                             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
@@ -130,14 +128,14 @@ class _RentDurationState extends State<RentDuration> {
               ),
               const SizedBox(height: 5),
               DropdownButtonFormField<String>(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    borderSide: const BorderSide(color: Color(0xFFA2C90C), width: 1.0), // Adjust color and width as needed
+                    borderSide: BorderSide(color: Color(0xFFA2C90C), width: 1.0), // Adjust color and width as needed
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    borderSide: const BorderSide(color: Color(0xFFA2C90C), width: 2.0), // Adjust color and width as needed
+                    borderSide: BorderSide(color: Color(0xFFA2C90C), width: 2.0), // Adjust color and width as needed
                   ),
                   hintText: 'Pilih jenis sewa',
                 ),
@@ -154,22 +152,22 @@ class _RentDurationState extends State<RentDuration> {
                   });
                 },
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 "Cost",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Text(
+              const Text(
                 "RP300.000/meter",
                 style: TextStyle(fontSize: 18, color: Color(0xFFA2C90C)),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 "Payment Method",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               itemProfile("OVO", Icons.wallet),
-              SizedBox(height: 32),
+              const SizedBox(height: 32),
               PrimaryButton(
                 title: "Book",
                 onTap: () {

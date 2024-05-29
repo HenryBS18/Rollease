@@ -20,7 +20,7 @@ class _TextFieldWithIconState extends State<TextFieldWithIcon> {
       focusNode: widget.focusNode,
       initialValue: widget.value,
       enabled: widget.enabled,
-      style: TextStyle(color: Colors.black),
+      style: const TextStyle(color: Colors.black),
       decoration: InputDecoration(
         prefixIcon: Icon(widget.icon),
         border: OutlineInputBorder(

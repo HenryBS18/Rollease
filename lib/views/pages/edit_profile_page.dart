@@ -30,16 +30,16 @@ class EditProfilePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: Color(0xFFA2C90C),
+                    color: const Color(0xFFA2C90C),
                     width: 3,
                   ),
                 ),
@@ -53,7 +53,7 @@ class EditProfilePage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -64,21 +64,21 @@ class EditProfilePage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: '',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color(0xFFA2C90C)),
+                        borderSide: const BorderSide(color: Color(0xFFA2C90C)),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color(0xFFA2C90C)),
+                        borderSide: const BorderSide(color: Color(0xFFA2C90C)),
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   const Text(
                     'Email Address',
                     style: TextStyle(
@@ -86,21 +86,21 @@ class EditProfilePage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: '',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color(0xFFA2C90C)),
+                        borderSide: const BorderSide(color: Color(0xFFA2C90C)),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(color: Color(0xFFA2C90C)),
+                        borderSide: const BorderSide(color: Color(0xFFA2C90C)),
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   const Text(
                     'Birth of Date',
                     style: TextStyle(
@@ -108,11 +108,11 @@ class EditProfilePage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10),
-                  DateField(),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 10),
+                  const DateField(),
+                  const SizedBox(height: 20),
                   FadeInUp(
-                    duration: Duration(milliseconds: 1400),
+                    duration: const Duration(milliseconds: 1400),
                     child: Center(
                       child: Stack(
                         alignment: Alignment.center,
@@ -124,11 +124,11 @@ class EditProfilePage extends StatelessWidget {
                               Navigator.pop(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ProfilePage(),
+                                  builder: (context) => const ProfilePage(),
                                 ),
                               );
                             },
-                            color: Color(0xFFA2C90C),
+                            color: const Color(0xFFA2C90C),
                             elevation: 0,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(9),
@@ -149,7 +149,7 @@ class EditProfilePage extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 color: Color(0xFFA2C90C),
                               ),
-                              padding: EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(8),
                               child: const Icon(
                                 Icons.edit_square,
                                 color: Colors.white,

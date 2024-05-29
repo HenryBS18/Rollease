@@ -41,7 +41,7 @@ class _DateFieldState extends State<DateField> {
         controller: _textEditingController,
         textAlignVertical: TextAlignVertical.center,
         onTap: () => _selectDate(context),
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           contentPadding: EdgeInsets.only(left: 20, right: 20),
           border: InputBorder.none,
           focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: CustomColors.primary)),

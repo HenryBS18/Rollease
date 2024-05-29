@@ -12,13 +12,13 @@ class _EndRidePageState extends State<EndRidePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("End"),
+        title: const Text("End"),
       ),
       body: ElevatedButton(
         onPressed: () {
           Navigator.pushNamed(context, '/bill');
         },
-        child: Text("End"),
+        child: const Text("End"),
       ),
     );
   }

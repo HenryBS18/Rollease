@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:rollease/models/dots_decorator.dart';
@@ -22,3 +23,4 @@ part 'text_field_with_icon.dart';
 part 'primary_button.dart';
 part 'primary_icon_button.dart';
 part 'history_card.dart';
+part 'custom_animated_widget.dart';

@@ -16,7 +16,7 @@ class BillInfo extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFF7A92B8),
                 borderRadius: BorderRadius.vertical(
                   bottom: Radius.circular(50.0),
@@ -27,7 +27,7 @@ class BillInfo extends StatelessWidget {
                   width: 300,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage('assets/bg_receipt.png'),
                       fit: BoxFit.cover,
                     ),
@@ -47,22 +47,22 @@ class BillInfo extends StatelessWidget {
                             ),
                             Text(
                               formattedDate,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 12,
                                 color: Colors.grey,
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: 10),
-                        Text(
+                        const SizedBox(height: 10),
+                        const Text(
                           'Your Bill Information',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         _buildBillInfoRow('Type of Vehicle', 'Electric Scooter'),
                         _buildBillInfoRow('Type of Rent', 'Argo Type'),
                         _buildBillInfoRow('Vehicle pick up', 'Station A'),
@@ -70,10 +70,10 @@ class BillInfo extends StatelessWidget {
                         _buildBillInfoRow('Distance', '54 m'),
                         _buildBillInfoRow('Spend', 'Rp 43.400,-'),
                         _buildBillInfoRow('Discount', 'Rp -'),
-                        Divider(),
+                        const Divider(),
                         _buildBillInfoRow('Grand Total', 'Rp 43.400,-', isBold: true, textColor: Colors.green),
-                        SizedBox(height: 20),
-                        Center(
+                        const SizedBox(height: 20),
+                        const Center(
                           child: Text(
                             'Thank You for using our services.',
                             style: TextStyle(
@@ -99,11 +99,11 @@ class BillInfo extends StatelessWidget {
                 children: [
                   Container(
                     width: double.infinity,
-                    padding: EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black12,
                           blurRadius: 10.0,
@@ -113,7 +113,7 @@ class BillInfo extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        Row(
+                        const Row(
                           children: [
                             Text(
                               'Payment method',
@@ -141,7 +141,7 @@ class BillInfo extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Container(
+                        SizedBox(
                           width: double.infinity,
                           child: OutlinedButton.icon(
                             onPressed: () {},
@@ -150,9 +150,9 @@ class BillInfo extends StatelessWidget {
                               padding: const EdgeInsets.all(5.0),
                               child: Image.asset('assets/disc.png', height: 24.0),
                             ),
-                            label: Text('USE PROMO OR VOUCHER HERE'),
+                            label: const Text('USE PROMO OR VOUCHER HERE'),
                             style: OutlinedButton.styleFrom(
-                              padding: EdgeInsets.symmetric(vertical: 15.0),
+                              padding: const EdgeInsets.symmetric(vertical: 15.0),
                             ),
                           ),
                         ),
@@ -161,11 +161,11 @@ class BillInfo extends StatelessWidget {
                             Navigator.pushNamed(context, '/home');
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.green,
-                            padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-                            minimumSize: Size(double.infinity, 50),
+                            backgroundColor: Colors.green,
+                            padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
+                            minimumSize: const Size(double.infinity, 50),
                           ),
-                          child: Text(
+                          child: const Text(
                             'Pay',
                             style: TextStyle(
                               fontSize: 18,

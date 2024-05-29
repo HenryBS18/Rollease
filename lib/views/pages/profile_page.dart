@@ -77,110 +77,111 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(
+                const Row(
                   children: [
                     Icon(
                       Icons.person_outline,
                       color: CustomColors.primary,
                       size: 32,
                     ),
-                    const SizedBox(width: 8),
+                    SizedBox(width: 8),
                     Text(
                       "Profile",
                       style: TextStyle(fontSize: 24),
                     )
                   ],
                 ),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
                 Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Color(0xFFA2C90C),
+                      color: const Color(0xFFA2C90C),
                       width: 8,
                     ),
                   ),
-                  child: CircleAvatar(
+                  child: const CircleAvatar(
                     radius: 40,
                     backgroundColor: Colors.transparent,
-                    child: const Icon(
+                    child: Icon(
                       Icons.person_outline,
                       size: 48,
                       color: Color(0xFFA2C90C),
                     ),
                   ),
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Full Name',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
                     ),
-                    SizedBox(height: 2),
+                    const SizedBox(height: 2),
                     TextFieldWithIcon(
                       value: "Henry Bintang Setiawan",
                       icon: CupertinoIcons.person,
                       enabled: isEdit,
                       focusNode: _focusNodeName,
                     ),
-                    SizedBox(height: 24),
-                    Text(
+                    const SizedBox(height: 24),
+                    const Text(
                       'Email Address',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
                     ),
-                    SizedBox(height: 2),
+                    const SizedBox(height: 2),
                     TextFieldWithIcon(
                       value: "henry@gmail.com",
                       icon: CupertinoIcons.mail,
                       enabled: isEdit,
                       focusNode: _focusNodeEmail,
                     ),
-                    SizedBox(height: 24),
-                    Text(
+                    const SizedBox(height: 24),
+                    const Text(
                       'Birth of Date',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
                     ),
-                    SizedBox(height: 2),
+                    const SizedBox(height: 2),
                     TextFieldWithIcon(
                       value: "12/1/2003",
                       icon: CupertinoIcons.calendar,
                       enabled: isEdit,
                       focusNode: _focusNodeBirthDate,
                     ),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     Center(
                       child: FadeInUp(
-                          duration: Duration(milliseconds: 1400),
-                          child: !isEdit
-                              ? PrimaryIconButton(
-                                  title: "Edit",
-                                  icon: Icons.edit_document,
-                                  onTap: () {
-                                    setState(() {
-                                      isEdit = true;
-                                    });
-                                  },
-                                )
-                              : PrimaryIconButton(
-                                  title: "Save",
-                                  icon: Icons.save,
-                                  onTap: () {
-                                    setState(() {
-                                      isEdit = false;
-                                    });
-                                  },
-                                )),
+                        duration: const Duration(milliseconds: 1400),
+                        child: !isEdit
+                            ? PrimaryIconButton(
+                                title: "Edit",
+                                icon: Icons.edit_document,
+                                onTap: () {
+                                  setState(() {
+                                    isEdit = true;
+                                  });
+                                },
+                              )
+                            : PrimaryIconButton(
+                                title: "Save",
+                                icon: Icons.save,
+                                onTap: () {
+                                  setState(() {
+                                    isEdit = false;
+                                  });
+                                },
+                              ),
+                      ),
                     ),
                   ],
                 ),

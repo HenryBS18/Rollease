@@ -12,13 +12,13 @@ class _ScanQrPageState extends State<ScanQrPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Scan"),
+        title: const Text("Scan"),
       ),
       body: ElevatedButton(
         onPressed: () {
           Navigator.pushNamed(context, '/howToRide');
         },
-        child: Text("Next"),
+        child: const Text("Next"),
       ),
     );
   }

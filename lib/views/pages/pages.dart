@@ -10,6 +10,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:rollease/models/history.dart';
 import 'package:rollease/models/onboarding.dart';
+import 'package:rollease/models/onboarding_item.dart';
 import 'package:rollease/models/station.dart';
 import 'package:rollease/utils/custom_colors.dart';
 import 'package:rollease/utils/utils.dart';

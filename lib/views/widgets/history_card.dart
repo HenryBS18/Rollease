@@ -13,7 +13,7 @@ class _HistoryCardState extends State<HistoryCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(8)),
         side: BorderSide(color: Color(0xFFA2C90C)),
       ),
@@ -21,7 +21,7 @@ class _HistoryCardState extends State<HistoryCard> {
         leading: Image.asset('assets/25.png'),
         title: Text(
           widget.history.name,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -30,30 +30,30 @@ class _HistoryCardState extends State<HistoryCard> {
             Expanded(
               child: Text(
                 widget.history.date,
-                style: TextStyle(fontSize: 12),
+                style: const TextStyle(fontSize: 12),
               ),
             ),
-            VerticalDivider(width: 1),
-            SizedBox(width: 8),
+            const VerticalDivider(width: 1),
+            const SizedBox(width: 8),
             Flexible(
               child: Text(
                 "${widget.history.bookingType} type",
-                style: TextStyle(fontSize: 12),
+                style: const TextStyle(fontSize: 12),
               ),
             ),
-            VerticalDivider(width: 1),
-            SizedBox(width: 8),
+            const VerticalDivider(width: 1),
+            const SizedBox(width: 8),
             Flexible(
               child: Text(
                 "${widget.history.timeUsed} minutes",
-                style: TextStyle(fontSize: 12),
+                style: const TextStyle(fontSize: 12),
               ),
             ),
-            VerticalDivider(width: 1),
-            SizedBox(width: 8),
+            const VerticalDivider(width: 1),
+            const SizedBox(width: 8),
             Text(
               "Rp ${widget.history.price}",
-              style: TextStyle(fontSize: 12, color: Color(0xFFA2C90C)),
+              style: const TextStyle(fontSize: 12, color: Color(0xFFA2C90C)),
             ),
           ],
         ),
