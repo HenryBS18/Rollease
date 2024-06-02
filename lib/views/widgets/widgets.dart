@@ -37,3 +37,4 @@ part 'bill_info_text.dart';
 part 'rate.dart';
 part 'camera_error_dialog.dart';
 part 'vehicle_info_card.dart';
+part 'my_checkbox.dart';
