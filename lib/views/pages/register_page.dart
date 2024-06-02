@@ -122,7 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                color: Color(0xffA2C90C),
+                                color: CustomColors.primary,
                                 width: 3,
                               ),
                             ),
@@ -149,7 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                               borderSide: const BorderSide(
-                                color: Color(0xffA2C90C),
+                                color: CustomColors.primary,
                                 width: 3,
                               ),
                             ),
@@ -188,7 +188,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 isChecked = !isChecked;
                               });
                             },
-                            splashColor: const Color(0xFFA2C90C),
+                            splashColor: CustomColors.primary,
                             child: Checkbox(
                               value: isChecked,
                               onChanged: (newValue) {
@@ -209,7 +209,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             child: const Text(
                               " Syarat & Ketentuan",
                               style: TextStyle(
-                                color: Color(0xffA2C90C),
+                                color: CustomColors.primary,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -255,7 +255,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
-                              color: Color(0xFFA2C90C),
+                              color: CustomColors.primary,
                             ),
                           ),
                         )

@@ -8,17 +8,17 @@ class TutorialBookingPage extends StatefulWidget {
 }
 
 class _TutorialBookingPageState extends State<TutorialBookingPage> {
-  bool isLeftActive = true;
+  bool isRent = false;
 
   void toggleToLeft() {
     setState(() {
-      isLeftActive = true;
+      isRent = false;
     });
   }
 
   void toggleToRight() {
     setState(() {
-      isLeftActive = false;
+      isRent = true;
     });
   }
 
@@ -78,52 +78,33 @@ class _TutorialBookingPageState extends State<TutorialBookingPage> {
           ),
           const SizedBox(height: 16),
           SlidingSwitch(
-            value: isLeftActive,
+            value: isRent,
             onChanged: (value) {
               setState(() {
-                isLeftActive = !value;
+                isRent = !value;
               });
             },
             onTap: () {},
             onDoubleTap: () {},
             onSwipe: () {},
             textOff: "Argo",
-            textOn: "Rent",
+            textOn: "Duration",
             contentSize: 16,
             background: const Color(0xffB6C4D4),
-            buttonColor: const Color(0xffA2C90C),
+            buttonColor: const Color(0xFFA2C90C),
             colorOff: Colors.white,
             colorOn: Colors.white,
             inactiveColor: Colors.white,
           ),
           const SizedBox(height: 8),
-          isLeftActive ? TypeOfRent(onBoardingList: argoOnBoardingList) : TypeOfRent(onBoardingList: rentOnBoardingList),
+          isRent ? TypeOfRent(onBoardingList: rentOnBoardingList) : TypeOfRent(onBoardingList: argoOnBoardingList),
           const SizedBox(height: 32),
-          ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor: const MaterialStatePropertyAll(Color(0xffA2C90C)),
-              shape: MaterialStatePropertyAll(
-                ContinuousRectangleBorder(borderRadius: BorderRadius.circular(24)),
-              ),
-            ),
-            onPressed: () {
-              Navigator.pushNamed(context, '/rent');
+          PrimaryButton(
+            title: "Skip",
+            onTap: () {
+              Navigator.pushNamed(context, '/booking');
             },
-            child: const SizedBox(
-              width: 144,
-              height: 48,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Next",
-                    style: TextStyle(fontSize: 24, color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          )
         ],
       ),
     );

@@ -57,16 +57,8 @@ class _HowToRidePage extends State<HowToRidePage> {
           },
           icon: const Icon(
             Icons.arrow_back_sharp,
-            size: 20,
+            size: 32,
             color: Colors.black,
-          ),
-        ),
-        title: const Text(
-          "Back",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
           ),
         ),
       ),
@@ -155,9 +147,9 @@ class _HowToRidePage extends State<HowToRidePage> {
                       radius: 10.0,
                       dotWidth: 10.0,
                       dotHeight: 10.0,
-                      expansionFactor: 3.8,
-                      dotColor: Color(0xFFA2C90C),
-                      activeDotColor: Color(0xFFA2C90C),
+                      expansionFactor: 2,
+                      dotColor: CustomColors.primary,
+                      activeDotColor: CustomColors.primary,
                     ),
                     onDotClicked: (newIndex) {
                       setState(() {
@@ -171,31 +163,16 @@ class _HowToRidePage extends State<HowToRidePage> {
                     },
                   ),
                   const Spacer(),
-                  currentIndex == listOfItems.length - 1
-                      ? Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 24),
-                          child: PrimaryButton(
-                            title: "Start",
-                            onTap: () {
-                              Navigator.pushNamed(context, '/end');
-                            },
-                          ),
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 50),
-                          child: PrimaryButton(
-                            title: "Skip",
-                            onTap: () {
-                              setState(() {
-                                pageController.animateToPage(
-                                  currentIndex + 1,
-                                  duration: const Duration(milliseconds: 1000),
-                                  curve: Curves.fastOutSlowIn,
-                                );
-                              });
-                            },
-                          ),
-                        ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: PrimaryButton(
+                      title: "Skip",
+                      onTap: () {
+                        context.read<ModeBloc>().add(BookingModeEvent());
+                        Navigator.pushReplacementNamed(context, '/home');
+                      },
+                    ),
+                  ),
                   const SizedBox(height: 20),
                 ],
               ),

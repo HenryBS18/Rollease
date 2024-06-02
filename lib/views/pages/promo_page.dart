@@ -39,65 +39,21 @@ class _PromoPageState extends State<PromoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_sharp,
-            size: 20,
-            color: Colors.black,
-          ),
-        ),
-        title: const Text(
-          "Back",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(5),
+      appBar: const CustomAppBar(title: "Promos", icon: Icons.confirmation_num),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 16, right: 16),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 4),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.transparent,
-                    child: Icon(
-                      Icons.label,
-                      size: 30,
-                      color: Color(0xFFA2C90C),
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Text(
-                    "Promos",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.grey[200],
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: TextField(
                     onChanged: (value) {
                       filterPromo(value);
@@ -110,14 +66,16 @@ class _PromoPageState extends State<PromoPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
               ListView.builder(
                 shrinkWrap: true,
                 itemCount: filteredList.length,
                 itemBuilder: (context, index) {
                   return Card(
                     shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)), side: BorderSide(color: Color(0xFFA2C90C))),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      side: BorderSide(color: CustomColors.primary),
+                    ),
                     child: ListTile(
                       leading: Image.asset('assets/disc1.png'),
                       title: Text(
@@ -131,7 +89,7 @@ class _PromoPageState extends State<PromoPage> {
                       trailing: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFFA2C90C),
+                          backgroundColor: CustomColors.primary,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),

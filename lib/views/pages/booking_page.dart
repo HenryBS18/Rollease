@@ -1,5 +1,12 @@
 part of 'pages.dart';
 
+class DurationCost {
+  final String duration;
+  final int cost;
+
+  DurationCost({required this.duration, required this.cost});
+}
+
 class BookingPage extends StatefulWidget {
   const BookingPage({Key? key}) : super(key: key);
 
@@ -8,7 +15,28 @@ class BookingPage extends StatefulWidget {
 }
 
 class _BookingPageState extends State<BookingPage> {
+  final List<DurationCost> durationCostList = [
+    DurationCost(duration: '15 minutes', cost: 5000),
+    DurationCost(duration: '30 minutes', cost: 10000),
+    DurationCost(duration: '45 minutes', cost: 15000),
+    DurationCost(duration: '1 hour', cost: 20000),
+  ];
+
+  final List<String> rentTypes = ['Argo', 'Duration'];
+
   String? _selectedRentType;
+  String? _selectedDuration;
+
+  @override
+  void initState() {
+    _selectedRentType = rentTypes[0];
+    _selectedDuration = durationCostList[0].duration;
+    super.initState();
+  }
+
+  int getCostForSelectedDuration() {
+    return durationCostList.firstWhere((dc) => dc.duration == _selectedDuration).cost;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,28 +64,24 @@ class _BookingPageState extends State<BookingPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Card(
-                    elevation: 0,
-                    color: const Color(0x4DA2C90C),
-                    child: SizedBox(
-                      width: 137.57,
-                      height: 180.44,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/25.png",
-                              fit: BoxFit.fill,
-                              width: 120,
-                            ),
-                          ],
+                Container(
+                  width: 140,
+                  height: 180,
+                  padding: const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    color: CustomColors.secondary,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Image.asset(
+                          "assets/25.png",
+                          fit: BoxFit.contain,
                         ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -81,11 +105,11 @@ class _BookingPageState extends State<BookingPage> {
                         children: [
                           Icon(
                             Icons.location_on_sharp,
-                            color: Color(0xFFA2C90C),
+                            color: CustomColors.primary,
                           ),
                           Text(
                             "Kampus UC Makassar",
-                            style: TextStyle(color: Color(0xFFA2C90C), fontSize: 12),
+                            style: TextStyle(color: CustomColors.primary, fontSize: 12, fontWeight: FontWeight.w900),
                           )
                         ],
                       ),
@@ -101,9 +125,7 @@ class _BookingPageState extends State<BookingPage> {
                             "89%",
                             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                          const SizedBox(
-                            width: 3,
-                          ),
+                          const SizedBox(width: 3),
                           Image.asset("assets/Battery90.png")
                         ],
                       ),
@@ -120,8 +142,8 @@ class _BookingPageState extends State<BookingPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 5),
-            DropdownButtonFormField(
+            const SizedBox(height: 4),
+            DropdownButtonFormField<String>(
               decoration: const InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -131,11 +153,10 @@ class _BookingPageState extends State<BookingPage> {
                   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                   borderSide: BorderSide(color: Color(0xFFA2C90C), width: 2.0),
                 ),
-                hintText: 'Pilih jenis sewa',
               ),
               value: _selectedRentType,
-              items: <String>['Argo', 'Duration'].map((String value) {
-                return DropdownMenuItem(
+              items: rentTypes.map((String value) {
+                return DropdownMenuItem<String>(
                   value: value,
                   child: SizedBox(
                     width: 200,
@@ -145,26 +166,82 @@ class _BookingPageState extends State<BookingPage> {
               }).toList(),
               onChanged: (String? newValue) {
                 setState(() {
-                  _selectedRentType = newValue;
+                  _selectedRentType = newValue!;
                 });
               },
             ),
-            const SizedBox(height: 20),
-            const Text(
-              "Cost",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            const SizedBox(height: 16),
+            SizedBox(
+              child: _selectedRentType == 'Argo'
+                  ? const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Cost",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "Rp 300/meter",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: CustomColors.primary,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        SizedBox(height: 200),
+                      ],
+                    )
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "Duration",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        DropdownButtonFormField<String>(
+                          decoration: const InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                              borderSide: BorderSide(color: Color(0xFFA2C90C), width: 1.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                              borderSide: BorderSide(color: Color(0xFFA2C90C), width: 2.0),
+                            ),
+                          ),
+                          value: _selectedDuration,
+                          items: durationCostList.map((DurationCost value) {
+                            return DropdownMenuItem<String>(
+                              value: value.duration,
+                              child: SizedBox(
+                                width: 200,
+                                child: Text(value.duration),
+                              ),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              _selectedDuration = newValue!;
+                            });
+                          },
+                        ),
+                        const SizedBox(height: 16),
+                        const Text(
+                          "Cost",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "Rp ${getCostForSelectedDuration()}",
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: CustomColors.primary,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        const SizedBox(height: 94),
+                      ],
+                    ),
             ),
-            const Text(
-              "RP300.000/meter",
-              style: TextStyle(fontSize: 18, color: Color(0xFFA2C90C)),
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              "Payment Method",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            itemProfile("OVO", Icons.wallet),
-            const SizedBox(height: 32),
             Center(
               child: PrimaryButton(
                 title: "Book",

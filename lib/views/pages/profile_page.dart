@@ -49,64 +49,28 @@ class _ProfilePageState extends State<ProfilePage> {
     return GestureDetector(
       onTap: _unfocusAllFields,
       child: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_sharp,
-              size: 20,
-              color: Colors.black,
-            ),
-          ),
-          title: const Text(
-            "Back",
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
-          ),
-        ),
+        appBar: const CustomAppBar(title: "Profile", icon: Icons.person_outline),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 24, right: 24, top: 24),
+            padding: const EdgeInsets.only(left: 24, right: 24, top: 32),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Row(
-                  children: [
-                    Icon(
-                      Icons.person_outline,
-                      color: CustomColors.primary,
-                      size: 32,
-                    ),
-                    SizedBox(width: 8),
-                    Text(
-                      "Profile",
-                      style: TextStyle(fontSize: 24),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 32),
                 Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: const Color(0xFFA2C90C),
-                      width: 8,
+                      color: CustomColors.primary,
+                      width: 10,
                     ),
                   ),
                   child: const CircleAvatar(
-                    radius: 40,
+                    radius: 48,
                     backgroundColor: Colors.transparent,
                     child: Icon(
                       Icons.person_outline,
-                      size: 48,
-                      color: Color(0xFFA2C90C),
+                      size: 56,
+                      color: CustomColors.primary,
                     ),
                   ),
                 ),
