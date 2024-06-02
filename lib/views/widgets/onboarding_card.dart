@@ -12,7 +12,11 @@ class OnBoardingCard extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(image, height: 350),
+        Image.asset(
+          image,
+          fit: BoxFit.contain,
+          height: 280,
+        ),
         const SizedBox(height: 32),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),

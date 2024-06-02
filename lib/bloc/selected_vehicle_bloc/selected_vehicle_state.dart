@@ -4,8 +4,8 @@ sealed class SelectedVehicleState {}
 
 final class SelectedVehicleInitial extends SelectedVehicleState {}
 
-final class SelectedVehicleId extends SelectedVehicleState {
-  final int id;
+final class SelectedVehicle extends SelectedVehicleState {
+  final Vehicle vehicle;
 
-  SelectedVehicleId(this.id);
+  SelectedVehicle(this.vehicle);
 }

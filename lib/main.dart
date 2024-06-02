@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rollease/bloc/current_station_bloc/current_station_bloc.dart';
 import 'package:rollease/bloc/mode_bloc/mode_bloc.dart';
 import 'package:rollease/bloc/photo_bloc/photo_bloc.dart';
 import 'package:rollease/bloc/selected_vehicle_bloc/selected_vehicle_bloc.dart';
+import 'package:rollease/bloc/station_bloc/station_bloc.dart';
 import 'package:rollease/views/pages/pages.dart';
 
 void main() async {
@@ -21,6 +23,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ModeBloc()..add(NormalModeEvent())),
         BlocProvider(create: (context) => PhotoBloc()),
         BlocProvider(create: (context) => SelectedVehicleBloc()),
+        BlocProvider(create: (context) => StationBloc()),
+        BlocProvider(create: (context) => CurrentStationBloc()),
       ],
       child: MaterialApp(
         title: "Rollease",

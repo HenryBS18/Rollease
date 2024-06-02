@@ -108,7 +108,6 @@ class TakePictureScreenState extends State<PhotoPage> {
                           try {
                             String imagePath = await _takePicture();
                             context.read<PhotoBloc>().add(AddPhotoEvent(imagePath));
-                            _controller.stopImageStream();
                             Navigator.pushNamed(context, '/photo-result');
                           } catch (e) {
                             showDialog(

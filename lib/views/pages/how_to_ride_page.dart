@@ -10,6 +10,7 @@ class HowToRidePage extends StatefulWidget {
 class _HowToRidePage extends State<HowToRidePage> {
   PageController pageController = PageController(initialPage: 0);
   int currentIndex = 0;
+  bool dontShowAgain = false;
 
   List<OnboardingItem> listOfItems = [
     OnboardingItem(
@@ -46,7 +47,6 @@ class _HowToRidePage extends State<HowToRidePage> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -77,8 +77,10 @@ class _HowToRidePage extends State<HowToRidePage> {
               ),
             ),
           ),
-          Expanded(
-            flex: 3,
+          Container(
+            height: MediaQuery.of(context).size.height * 0.5,
+            // color: Colors.red,
+            margin: const EdgeInsets.only(top: 32),
             child: PageView.builder(
               controller: pageController,
               itemCount: listOfItems.length,
@@ -96,20 +98,19 @@ class _HowToRidePage extends State<HowToRidePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(
-                            width: size.width,
-                            height: size.height / 2.5,
                             child: CustomAnimatedWidget(
                               index: index,
                               delay: 100,
                               child: Image.asset(
                                 listOfItems[index].img,
                                 fit: BoxFit.contain,
+                                width: 320,
                               ),
                             ),
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 24),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            padding: const EdgeInsets.symmetric(horizontal: 48),
                             child: CustomAnimatedWidget(
                               index: index,
                               delay: 300,
@@ -118,7 +119,7 @@ class _HowToRidePage extends State<HowToRidePage> {
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.poppins(
                                   color: Colors.black,
-                                  fontSize: 15,
+                                  fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -132,51 +133,51 @@ class _HowToRidePage extends State<HowToRidePage> {
               }),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 45),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SmoothPageIndicator(
-                    controller: pageController,
-                    count: listOfItems.length,
-                    effect: const ExpandingDotsEffect(
-                      spacing: 6.0,
-                      radius: 10.0,
-                      dotWidth: 10.0,
-                      dotHeight: 10.0,
-                      expansionFactor: 2,
-                      dotColor: CustomColors.primary,
-                      activeDotColor: CustomColors.primary,
-                    ),
-                    onDotClicked: (newIndex) {
-                      setState(() {
-                        currentIndex = newIndex;
-                        pageController.animateToPage(
-                          newIndex,
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.ease,
-                        );
-                      });
-                    },
-                  ),
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: PrimaryButton(
-                      title: "Skip",
-                      onTap: () {
-                        context.read<ModeBloc>().add(BookingModeEvent());
-                        Navigator.pushReplacementNamed(context, '/home');
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                ],
+          const SizedBox(height: 48),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SmoothPageIndicator(
+                controller: pageController,
+                count: listOfItems.length,
+                effect: const ExpandingDotsEffect(
+                  spacing: 6.0,
+                  radius: 10.0,
+                  dotWidth: 10.0,
+                  dotHeight: 10.0,
+                  expansionFactor: 2,
+                  dotColor: CustomColors.primary,
+                  activeDotColor: CustomColors.primary,
+                ),
+                onDotClicked: (newIndex) {
+                  setState(() {
+                    currentIndex = newIndex;
+                    pageController.animateToPage(
+                      newIndex,
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.ease,
+                    );
+                  });
+                },
               ),
-            ),
+              const SizedBox(height: 48),
+              PrimaryButton(
+                title: "Skip",
+                onTap: () {
+                  context.read<ModeBloc>().add(BookingModeEvent());
+                  Navigator.pushReplacementNamed(context, '/home');
+                },
+              ),
+              const SizedBox(height: 16),
+              MyCheckbox(
+                value: dontShowAgain,
+                onChanged: (value) {
+                  setState(() {
+                    dontShowAgain = value!;
+                  });
+                },
+              )
+            ],
           ),
         ],
       ),

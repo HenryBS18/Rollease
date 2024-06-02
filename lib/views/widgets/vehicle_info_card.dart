@@ -17,8 +17,8 @@ class VehicleInfoCard extends StatelessWidget {
             color: CustomColors.secondary,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: (state is SelectedVehicleId)
-                  ? (state.id == vehicle.id ? Colors.black : Colors.transparent)
+              color: (state is SelectedVehicle)
+                  ? (state.vehicle.id == vehicle.id ? Colors.black : Colors.transparent)
                   : Colors.transparent,
               width: 3,
             ),

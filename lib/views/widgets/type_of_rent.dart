@@ -23,8 +23,11 @@ class _TypeOfRentState extends State<TypeOfRent> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.6,
+        Container(
+          // color: Colors.red,
+          height: MediaQuery.of(context).size.height * 0.5,
+          padding: const EdgeInsets.only(left: 32, right: 32),
+          margin: const EdgeInsets.only(top: 16),
           child: PageView.builder(
             controller: _pageController,
             itemCount: widget.onBoardingList.length,
