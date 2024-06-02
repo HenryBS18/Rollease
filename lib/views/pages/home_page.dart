@@ -108,6 +108,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    context.read<CurrentStationBloc>().add(GetCurrentStationEvent(stationList));
+
     return Scaffold(
       key: _scaffoldState,
       drawer: const Sidebar(),
