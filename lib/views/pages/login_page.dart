@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: const BorderSide(
-                            color: Color(0xffA2C90C),
+                            color: CustomColors.primary,
                             width: 3,
                           ),
                         ),
@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     FadeInUp(
-                      duration: Duration(milliseconds: 1400),
+                      duration: const Duration(milliseconds: 1400),
                       child: PrimaryIconButton(
                         title: "Login",
                         icon: Icons.login,
@@ -171,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 16,
-                            color: Color(0xFFA2C90C),
+                            color: CustomColors.primary,
                           ),
                         ),
                       ),

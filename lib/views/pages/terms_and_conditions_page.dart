@@ -5,60 +5,15 @@ class TermsAndConditonsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_sharp,
-            size: 20,
-            color: Colors.black,
-          ),
-        ),
-        title: const Text(
-          "Back",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
-      ),
-      body: const SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(5),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            SizedBox(height: 5),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                  radius: 40,
-                  backgroundColor: Colors.transparent,
-                  child: Icon(
-                    Icons.edit_document,
-                    size: 30,
-                    color: Color(0xFFA2C90C),
-                  ),
-                ),
-                SizedBox(width: 10),
-                Text(
-                  "Terms & Condition",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-              child: Text(
+    return const Scaffold(
+      appBar: CustomAppBar(title: "Terms & Conditions", icon: Icons.edit_document),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
                 "1. Informasi Penjemputan dan Tujuan: Pengguna wajib memberikan informasi lengkap dan akurat mengenai alamat penjemputan dan tujuan yang ditentukan sebelum menggunakan Layanan Scooter.\n\n"
                 "2. Pembatasan Barang yang Dibawa: Pengguna dilarang membawa barang-barang yang dilarang oleh peraturan perundang-undangan yang berlaku, termasuk barang-barang ilegal atau berbahaya seperti narkotika, obat-obatan terlarang, atau barang berat melebihi kapasitas scooter.\n\n"
                 "3. Bukan Layanan Pengiriman Barang: Layanan Scooter bukanlah layanan untuk pengiriman barang atau kurir instan. Sehingga dilarang menggunakan scooter untuk melakukan pengiriman barang.\n\n"
@@ -71,9 +26,9 @@ class TermsAndConditonsPage extends StatelessWidget {
                   fontSize: 14,
                   color: Colors.black,
                 ),
-              ),
-            )
-          ]),
+              )
+            ],
+          ),
         ),
       ),
     );

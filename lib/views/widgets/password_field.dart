@@ -40,7 +40,7 @@ class _PasswordFieldState extends State<PasswordField> {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
-            color: Color(0xffA2C90C),
+            color: CustomColors.primary,
             width: 3,
           ),
         ),

@@ -19,12 +19,41 @@ class _OnBoardingPage extends State<OnBoardingPage> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    List<OnboardingItem> listOfItems = [
+      OnboardingItem(
+        img: "assets/Icon3.png",
+        title: "Pesan melalui aplikasi",
+      ),
+      OnboardingItem(
+        img: "assets/Icon4.png",
+        title: "Pilih tipe kendaraan",
+      ),
+      OnboardingItem(
+        img: "assets/Icon4.png",
+        title: "Scan QR Code",
+      ),
+      OnboardingItem(
+        img: "assets/Icon4(1).png",
+        title: "Mengendarai",
+      ),
+    ];
+
     return Scaffold(
       body: Column(
         children: [
-          Expanded(
-            flex: 3,
+          Padding(
+            padding: const EdgeInsets.only(top: 64, left: 24),
+            child: Row(
+              children: [
+                Image.asset(
+                  "assets/LogoUtama.png",
+                  width: 96,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.6,
             child: PageView.builder(
               controller: pageController,
               itemCount: listOfItems.length,
@@ -35,50 +64,35 @@ class _OnBoardingPage extends State<OnBoardingPage> {
               },
               physics: const BouncingScrollPhysics(),
               itemBuilder: ((context, index) {
-                return Stack(
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: size.width,
-                            height: size.height / 2.5,
-                            child: CustomAnimatedWidget(
-                              index: index,
-                              delay: 100,
-                              child: Image.asset(
-                                listOfItems[index].img,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: CustomAnimatedWidget(
-                              index: index,
-                              delay: 300,
-                              child: Text(
-                                listOfItems[index].title,
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.poppins(
-                                  color: Colors.black,
-                                  fontSize: 26,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height / 2.5,
+                      child: CustomAnimatedWidget(
+                        index: index,
+                        delay: 100,
+                        child: Image.asset(
+                          listOfItems[index].img,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                    Positioned(
-                      top: 66,
-                      left: 21,
-                      child: Image.asset(
-                        "assets/LogoUtama.png",
-                        width: 89,
-                        height: 74,
+                    const SizedBox(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: CustomAnimatedWidget(
+                        index: index,
+                        delay: 300,
+                        child: Text(
+                          listOfItems[index].title,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                            color: Colors.black,
+                            fontSize: 26,
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -86,126 +100,41 @@ class _OnBoardingPage extends State<OnBoardingPage> {
               }),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 45), // Atur jarak dengan bottom
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SmoothPageIndicator(
-                    controller: pageController,
-                    count: listOfItems.length,
-                    effect: const ExpandingDotsEffect(
-                      spacing: 6.0,
-                      radius: 10.0,
-                      dotWidth: 10.0,
-                      dotHeight: 10.0,
-                      expansionFactor: 3.8,
-                      dotColor: Color(
-                        0xFFA2C90C,
-                      ),
-                      activeDotColor: Color(0xFFA2C90C),
-                    ),
-                    onDotClicked: (newIndex) {
-                      setState(() {
-                        currentIndex = newIndex;
-                        pageController.animateToPage(
-                          newIndex,
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.ease,
-                        );
-                      });
-                    },
-                  ),
-                  const Spacer(),
-                  currentIndex == listOfItems.length - 1
-                      ? Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 24),
-                          child: PrimaryButton(
-                            title: "Get started",
-                            onTap: () {
-                              Navigator.pushReplacementNamed(context, '/login');
-                            },
-                          ),
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 50),
-                          child: PrimaryButton(
-                            title: "Skip",
-                            onTap: () {
-                              setState(() {
-                                pageController.animateToPage(
-                                  3,
-                                  duration: const Duration(milliseconds: 1000),
-                                  curve: Curves.fastOutSlowIn,
-                                );
-                              });
-                            },
-                          ),
-                        ),
-                  const SizedBox(height: 20),
-                ],
+          SizedBox(
+            height: 10,
+            child: SmoothPageIndicator(
+              controller: pageController,
+              count: listOfItems.length,
+              effect: const ExpandingDotsEffect(
+                spacing: 6.0,
+                radius: 10.0,
+                dotWidth: 10.0,
+                dotHeight: 10.0,
+                expansionFactor: 2,
+                dotColor: CustomColors.primary,
+                activeDotColor: CustomColors.primary,
               ),
+              onDotClicked: (newIndex) {
+                setState(() {
+                  currentIndex = newIndex;
+                  pageController.animateToPage(
+                    newIndex,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.ease,
+                  );
+                });
+              },
             ),
+          ),
+          const SizedBox(height: 48),
+          PrimaryButton(
+            title: "Get started",
+            onTap: () {
+              Navigator.pushReplacementNamed(context, '/login');
+            },
           ),
         ],
       ),
     );
   }
 }
-
-class CustomAnimatedWidget extends StatelessWidget {
-  final int index;
-  final int delay;
-  final Widget child;
-  const CustomAnimatedWidget({
-    Key? key,
-    required this.index,
-    required this.delay,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    if (index == 1) {
-      return FadeInDown(
-        delay: Duration(milliseconds: delay),
-        child: child,
-      );
-    }
-    return FadeInUp(
-      delay: Duration(milliseconds: delay),
-      child: child,
-    );
-  }
-}
-
-class Items {
-  final String img;
-  final String title;
-
-  Items({
-    required this.img,
-    required this.title,
-  });
-}
-
-List<Items> listOfItems = [
-  Items(
-    img: "assets/Icon3.png",
-    title: "Pesan melalui aplikasi",
-  ),
-  Items(
-    img: "assets/Icon4.png",
-    title: "Pilih tipe kendaraan",
-  ),
-  Items(
-    img: "assets/Icon4.png",
-    title: "Scan QR Code",
-  ),
-  Items(
-    img: "assets/Icon4(1).png",
-    title: "Mengendarai",
-  ),
-];

@@ -10,19 +10,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final MapController _mapController = MapController();
   final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
-  // final AlignOnUpdate _followOnLocationUpdate = AlignOnUpdate.always;
-  // final StreamController<double?> _followCurrentLocationStreamController = StreamController<double?>();
+  final AlignOnUpdate _followOnLocationUpdate = AlignOnUpdate.once;
+  final StreamController<double?> _followCurrentLocationStreamController = StreamController<double?>();
 
   int currentIndex = 0;
-  bool isScooter = false;
   LatLng centerLocation = const LatLng(-5.15054559580349, 119.39584494687219);
 
-  List<Station> stationList = [
-    Station(const LatLng(-5.148975720757649, 119.39523283019129), "Station UC", "Kampus UC Makassar"),
-    Station(const LatLng(-5.148721772990743, 119.3978736537028), "Station Business Park", "Business Park"),
-    Station(const LatLng(-5.14783518245103, 119.39559877170836), "Station Sunset Quay", "Sunset Quay"),
-    Station(const LatLng(-5.149649701735801, 119.39457008849449), "Station Delft", "Apartment Delft"),
-  ];
+  List<Station> stationList = [];
 
   Future<LatLng> getCurrentLocationLatLng() async {
     Position location = await determinePosition();
@@ -56,6 +50,60 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     initCenterLocation();
+
+    List<Vehicle> vehicleList = [
+      Vehicle(id: 1, name: "Scooter A", type: "Scooter", inUse: false, battery: 100),
+      Vehicle(id: 2, name: "Scooter B", type: "Scooter", inUse: false, battery: 80),
+      Vehicle(id: 3, name: "Bike A", type: "Bike", inUse: false, battery: 93),
+      Vehicle(id: 4, name: "Bike B", type: "Bike", inUse: false, battery: 32),
+      Vehicle(id: 5, name: "Bike C", type: "Bike", inUse: false, battery: 25),
+      Vehicle(id: 6, name: "Bike D", type: "Bike", inUse: false, battery: 84),
+    ];
+
+    stationList = [
+      Station(
+        latLng: const LatLng(-5.14897, 119.39504),
+        name: "Station UC",
+        place: "Kampus UC Makassar",
+        image: "assets/station image.png",
+        vehicleList: vehicleList,
+      ),
+      Station(
+        latLng: const LatLng(-5.14876, 119.39798),
+        name: "Station Business Park",
+        place: "Business Park",
+        image: "assets/station image.png",
+        vehicleList: vehicleList,
+      ),
+      Station(
+        latLng: const LatLng(-5.14898, 119.39422),
+        name: "Station Sunset Quay A",
+        place: "Sunset Quay A",
+        image: "assets/station image.png",
+        vehicleList: vehicleList,
+      ),
+      Station(
+        latLng: const LatLng(-5.14776, 119.39572),
+        name: "Station Sunset Quay B",
+        place: "Sunset Quay B",
+        image: "assets/station image.png",
+        vehicleList: vehicleList,
+      ),
+      Station(
+        latLng: const LatLng(-5.14975, 119.39455),
+        name: "Station Delft",
+        place: "Apartment Delft",
+        image: "assets/station image.png",
+        vehicleList: vehicleList,
+      ),
+      Station(
+        latLng: const LatLng(-5.14841, 119.39807),
+        name: "Station HW",
+        place: "W Super Club",
+        image: "assets/station image.png",
+        vehicleList: vehicleList,
+      )
+    ];
   }
 
   @override
@@ -69,23 +117,23 @@ class _HomePageState extends State<HomePage> {
             mapController: _mapController,
             options: MapOptions(
               initialCenter: centerLocation,
-              initialZoom: 16.5,
+              initialZoom: 16.8,
             ),
             children: [
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                 userAgentPackageName: 'com.example.app',
               ),
-              // CurrentLocationLayer(
-              //   alignPositionOnUpdate: _followOnLocationUpdate,
-              //   alignPositionStream: _followCurrentLocationStreamController.stream,
-              //   alignDirectionOnUpdate: AlignOnUpdate.never,
-              //   style: const LocationMarkerStyle(
-              //     marker: DefaultLocationMarker(),
-              //     markerSize: Size(20, 20),
-              //     markerDirection: MarkerDirection.heading,
-              //   ),
-              // ),
+              CurrentLocationLayer(
+                alignPositionOnUpdate: _followOnLocationUpdate,
+                alignPositionStream: _followCurrentLocationStreamController.stream,
+                alignDirectionOnUpdate: AlignOnUpdate.never,
+                style: const LocationMarkerStyle(
+                  marker: DefaultLocationMarker(),
+                  markerSize: Size(20, 20),
+                  markerDirection: MarkerDirection.heading,
+                ),
+              ),
               MarkerLayer(
                 markers: List.generate(
                   stationList.length,
@@ -101,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                           const Icon(
                             Icons.location_on,
                             color: Colors.red,
-                            size: 35,
+                            size: 32,
                           ),
                           Container(
                             width: 100,
@@ -138,7 +186,7 @@ class _HomePageState extends State<HomePage> {
               },
               child: const Icon(
                 Icons.person_outlined,
-                color: Color(0xffA2C90C),
+                color: CustomColors.primary,
                 size: 44,
               ),
             ),
@@ -148,266 +196,15 @@ class _HomePageState extends State<HomePage> {
             left: 0,
             right: 0,
             bottom: 0,
-            child: DraggableScrollableSheet(
-              initialChildSize: 0.4,
-              maxChildSize: 0.82,
-              minChildSize: 0.4,
-              expand: true,
-              snap: true,
-              snapSizes: const [0.4],
-              builder: (BuildContext context, ScrollController scrollController) {
-                return Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(32),
-                      topRight: Radius.circular(32),
-                    ),
-                  ),
-                  child: CustomScrollView(
-                    controller: scrollController,
-                    slivers: [
-                      SliverToBoxAdapter(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.3,
-                                height: 8,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(16),
-                                  color: const Color(0xffA2C90C),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      SliverList.list(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 16, top: 4),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        const Text(
-                                          "Nearest Station",
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            decoration: TextDecoration.none,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 12),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                width: MediaQuery.of(context).size.width * 0.3,
-                                                height: 240,
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(16),
-                                                  color: const Color(0xffA2C90C),
-                                                ),
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  SizedBox(
-                                                    width: MediaQuery.of(context).size.width * 0.47,
-                                                    child: Text(
-                                                      stationList[currentIndex].name,
-                                                      style: const TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 20,
-                                                        fontWeight: FontWeight.bold,
-                                                        decoration: TextDecoration.none,
-                                                        overflow: TextOverflow.clip,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 8),
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.start,
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                    children: [
-                                                      const Icon(
-                                                        Icons.location_on,
-                                                        color: Color(0xffA2C90C),
-                                                        size: 24,
-                                                      ),
-                                                      Text(
-                                                        stationList[currentIndex].place,
-                                                        style: const TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.black,
-                                                          decoration: TextDecoration.none,
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  const SizedBox(height: 8),
-                                                  const Text(
-                                                    "Available Rides",
-                                                    style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: Colors.black,
-                                                      fontWeight: FontWeight.normal,
-                                                      decoration: TextDecoration.none,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 8),
-                                                  Row(
-                                                    children: [
-                                                      Container(
-                                                        width: MediaQuery.of(context).size.width * 0.22,
-                                                        height: 120,
-                                                        decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(16),
-                                                          color: const Color(0xffA2C90C),
-                                                        ),
-                                                      ),
-                                                      const SizedBox(width: 12),
-                                                      Container(
-                                                        width: MediaQuery.of(context).size.width * 0.22,
-                                                        height: 120,
-                                                        decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.circular(16),
-                                                          color: const Color(0xffA2C90C),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Column(
-                                      children: [
-                                        GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              if (currentIndex >= 3) {
-                                                currentIndex = 0;
-                                                centerLocation = stationList[currentIndex].latLng;
-                                                _mapController.move(centerLocation, 16.5);
-                                                return;
-                                              }
-                                              currentIndex++;
-                                              centerLocation = stationList[currentIndex].latLng;
-                                              _mapController.move(centerLocation, 16.5);
-                                            });
-                                          },
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context).size.width * 0.16,
-                                            height: 240,
-                                            child: const Column(
-                                              crossAxisAlignment: CrossAxisAlignment.center,
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.chevron_right,
-                                                  size: 64,
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 24),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SlidingSwitch(
-                                      width: 240,
-                                      height: 48,
-                                      value: isScooter,
-                                      onChanged: (value) {
-                                        isScooter = !value;
-                                      },
-                                      onTap: () {},
-                                      onDoubleTap: () {},
-                                      onSwipe: () {},
-                                      textOff: "Scooter",
-                                      textOn: "Bike",
-                                      contentSize: 16,
-                                      background: const Color(0xffB6C4D4),
-                                      buttonColor: const Color(0xffA2C90C),
-                                      colorOff: Colors.white,
-                                      colorOn: Colors.white,
-                                      inactiveColor: Colors.white,
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 24),
-                                SizedBox(
-                                  height: 180,
-                                  child: ListView.builder(
-                                    itemCount: 5,
-                                    scrollDirection: Axis.horizontal,
-                                    itemBuilder: (context, index) {
-                                      return Row(
-                                        children: [
-                                          Container(
-                                            width: 120,
-                                            height: 180,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(16),
-                                              color: const Color(0xffA2C90C),
-                                            ),
-                                          ),
-                                          const SizedBox(width: 16),
-                                        ],
-                                      );
-                                    },
-                                  ),
-                                ),
-                                const SizedBox(height: 8),
-                                const Text(
-                                  "Select Rides that you want*",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                    decoration: TextDecoration.none,
-                                  ),
-                                ),
-                                const SizedBox(height: 16),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    PrimaryButton(
-                                      title: "Book",
-                                      onTap: () {
-                                        Navigator.pushNamed(context, '/tutorial');
-                                      },
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
+            child: BlocBuilder<ModeBloc, ModeState>(
+              builder: (context, state) {
+                if (state is BookingMode) {
+                  return const BookingModeBottomSheet();
+                }
+
+                return NormalModeBottomSheet(
+                  stationList: stationList,
+                  currentIndex: currentIndex,
                 );
               },
             ),

@@ -1,23 +1,18 @@
 part of 'widgets.dart';
 
-class DebitCard extends StatefulWidget {
+class DebitCard extends StatelessWidget {
   final String name;
 
   const DebitCard({Key? key, required this.name}) : super(key: key);
 
   @override
-  State<DebitCard> createState() => _DebitCardState();
-}
-
-class _DebitCardState extends State<DebitCard> {
-  @override
   Widget build(BuildContext context) {
     return Container(
-      height: 76,
+      height: 64,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
-          color: const Color(0xffA2C90C),
+          color: CustomColors.primary,
           width: 3,
         ),
         borderRadius: BorderRadius.circular(8),
@@ -31,13 +26,13 @@ class _DebitCardState extends State<DebitCard> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  widget.name,
-                  style: const TextStyle(fontSize: 20),
+                  name,
+                  style: const TextStyle(fontSize: 18),
                 ),
                 Image.asset(
                   "assets/mastercard.png",
-                  width: 32,
-                  height: 20,
+                  width: 24,
+                  height: 12,
                 )
               ],
             ),

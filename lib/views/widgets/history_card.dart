@@ -1,27 +1,22 @@
 part of 'widgets.dart';
 
-class HistoryCard extends StatefulWidget {
+class HistoryCard extends StatelessWidget {
   final History history;
 
   const HistoryCard({Key? key, required this.history}) : super(key: key);
 
   @override
-  State<HistoryCard> createState() => _HistoryCardState();
-}
-
-class _HistoryCardState extends State<HistoryCard> {
-  @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(8)),
-        side: BorderSide(color: Color(0xFFA2C90C)),
+        side: BorderSide(color: CustomColors.primary),
       ),
       child: ListTile(
         leading: Image.asset('assets/25.png'),
         title: Text(
-          widget.history.name,
-          style: TextStyle(
+          history.name,
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -29,31 +24,31 @@ class _HistoryCardState extends State<HistoryCard> {
           children: [
             Expanded(
               child: Text(
-                widget.history.date,
-                style: TextStyle(fontSize: 12),
+                history.date,
+                style: const TextStyle(fontSize: 12),
               ),
             ),
-            VerticalDivider(width: 1),
-            SizedBox(width: 8),
+            const VerticalDivider(width: 1),
+            const SizedBox(width: 8),
             Flexible(
               child: Text(
-                "${widget.history.bookingType} type",
-                style: TextStyle(fontSize: 12),
+                "${history.bookingType} type",
+                style: const TextStyle(fontSize: 12),
               ),
             ),
-            VerticalDivider(width: 1),
-            SizedBox(width: 8),
+            const VerticalDivider(width: 1),
+            const SizedBox(width: 8),
             Flexible(
               child: Text(
-                "${widget.history.timeUsed} minutes",
-                style: TextStyle(fontSize: 12),
+                "${history.timeUsed} minutes",
+                style: const TextStyle(fontSize: 12),
               ),
             ),
-            VerticalDivider(width: 1),
-            SizedBox(width: 8),
+            const VerticalDivider(width: 1),
+            const SizedBox(width: 8),
             Text(
-              "Rp ${widget.history.price}",
-              style: TextStyle(fontSize: 12, color: Color(0xFFA2C90C)),
+              "Rp ${history.price}",
+              style: const TextStyle(fontSize: 12, color: CustomColors.primary),
             ),
           ],
         ),

@@ -1,21 +1,16 @@
 part of 'widgets.dart';
 
-class OvoBalanceCard extends StatefulWidget {
+class OvoBalanceCard extends StatelessWidget {
   const OvoBalanceCard({Key? key}) : super(key: key);
 
   @override
-  _OvoBalanceCardState createState() => _OvoBalanceCardState();
-}
-
-class _OvoBalanceCardState extends State<OvoBalanceCard> {
-  @override
   Widget build(BuildContext context) {
     return Container(
-      height: 86,
+      height: 76,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
-          color: const Color(0xffA2C90C),
+          color: CustomColors.primary,
           width: 3,
         ),
         borderRadius: BorderRadius.circular(8),
@@ -33,7 +28,7 @@ class _OvoBalanceCardState extends State<OvoBalanceCard> {
                 Text(
                   "Balance",
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 16,
                     color: Color(0xff81895F),
                     fontWeight: FontWeight.w600,
                   ),
@@ -41,7 +36,7 @@ class _OvoBalanceCardState extends State<OvoBalanceCard> {
                 Text(
                   "Rp. 250.000",
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Color(0xff81895F),
                   ),
@@ -52,7 +47,7 @@ class _OvoBalanceCardState extends State<OvoBalanceCard> {
               "OVO",
               style: TextStyle(
                 color: Color(0xff8444B7),
-                fontSize: 24,
+                fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),

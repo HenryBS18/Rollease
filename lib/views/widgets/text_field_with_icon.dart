@@ -20,7 +20,7 @@ class _TextFieldWithIconState extends State<TextFieldWithIcon> {
       focusNode: widget.focusNode,
       initialValue: widget.value,
       enabled: widget.enabled,
-      style: TextStyle(color: Colors.black),
+      style: const TextStyle(color: Colors.black),
       decoration: InputDecoration(
         prefixIcon: Icon(widget.icon),
         border: OutlineInputBorder(
@@ -29,14 +29,14 @@ class _TextFieldWithIconState extends State<TextFieldWithIcon> {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
-            color: Color(0xffA2C90C),
+            color: CustomColors.primary,
             width: 3,
           ),
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
-            color: Color(0xffA2C90C),
+            color: CustomColors.primary,
             width: 1,
           ),
         ),

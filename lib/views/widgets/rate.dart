@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+part of 'widgets.dart';
 
 class RateApp extends StatelessWidget {
   const RateApp({Key? key}) : super(key: key);
@@ -9,7 +8,7 @@ class RateApp extends StatelessWidget {
     return FutureBuilder<void>(
       future: showFeedbackBottomSheet(context: context),
       builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-        return SizedBox.shrink(); // Mengembalikan widget kosong sementara menunggu tampilan bottom sheet.
+        return const SizedBox.shrink();
       },
     );
   }
@@ -69,13 +68,13 @@ class RateApp extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 RatingBar.builder(
                   glow: false,
                   allowHalfRating: true,
                   unratedColor: Colors.grey[400],
                   itemSize: 50,
-                  itemBuilder: (context, _) => const Icon(Icons.star, color: Color(0xFFA2C90C)),
+                  itemBuilder: (context, _) => const Icon(Icons.star, color: CustomColors.primary),
                   onRatingUpdate: (rating) {
                     // Navigator.pop(context);
                   },

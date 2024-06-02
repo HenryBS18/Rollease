@@ -4,35 +4,35 @@ class HowToRidePage extends StatefulWidget {
   const HowToRidePage({Key? key}) : super(key: key);
 
   @override
-  State<HowToRidePage> createState() => _OnBoarding();
+  State<HowToRidePage> createState() => _HowToRidePage();
 }
 
-class _OnBoarding extends State<HowToRidePage> {
+class _HowToRidePage extends State<HowToRidePage> {
   PageController pageController = PageController(initialPage: 0);
   int currentIndex = 0;
 
-  List<Items> listOfItems = [
-    Items(
+  List<OnboardingItem> listOfItems = [
+    OnboardingItem(
       img: "assets/Artboard6.png",
       title: "Unlock the electric vehicle",
     ),
-    Items(
+    OnboardingItem(
       img: "assets/Artboard5.png",
       title: "Put helmet on",
     ),
-    Items(
+    OnboardingItem(
       img: "assets/TORArgoo2.png",
       title: "Start riding",
     ),
-    Items(
+    OnboardingItem(
       img: "assets/Artboard8.png",
       title: "Adjust the speed and stay in designated areas",
     ),
-    Items(
+    OnboardingItem(
       img: "assets/Artboard9.png",
       title: "Always check the time limit of your rent vehicle",
     ),
-    Items(
+    OnboardingItem(
       img: "assets/TORArgo1.png",
       title: "Return the vehicle at the nearest station",
     ),
@@ -57,16 +57,8 @@ class _OnBoarding extends State<HowToRidePage> {
           },
           icon: const Icon(
             Icons.arrow_back_sharp,
-            size: 20,
+            size: 32,
             color: Colors.black,
-          ),
-        ),
-        title: const Text(
-          "Back",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
           ),
         ),
       ),
@@ -103,7 +95,7 @@ class _OnBoarding extends State<HowToRidePage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
+                          SizedBox(
                             width: size.width,
                             height: size.height / 2.5,
                             child: CustomAnimatedWidget(
@@ -155,9 +147,9 @@ class _OnBoarding extends State<HowToRidePage> {
                       radius: 10.0,
                       dotWidth: 10.0,
                       dotHeight: 10.0,
-                      expansionFactor: 3.8,
-                      dotColor: Color(0xFFA2C90C),
-                      activeDotColor: Color(0xFFA2C90C),
+                      expansionFactor: 2,
+                      dotColor: CustomColors.primary,
+                      activeDotColor: CustomColors.primary,
                     ),
                     onDotClicked: (newIndex) {
                       setState(() {
@@ -171,31 +163,16 @@ class _OnBoarding extends State<HowToRidePage> {
                     },
                   ),
                   const Spacer(),
-                  currentIndex == listOfItems.length - 1
-                      ? Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 24),
-                          child: PrimaryButton(
-                            title: "Start",
-                            onTap: () {
-                              Navigator.pushNamed(context, '/end');
-                            },
-                          ),
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 50),
-                          child: PrimaryButton(
-                            title: "Skip",
-                            onTap: () {
-                              setState(() {
-                                pageController.animateToPage(
-                                  currentIndex + 1,
-                                  duration: const Duration(milliseconds: 1000),
-                                  curve: Curves.fastOutSlowIn,
-                                );
-                              });
-                            },
-                          ),
-                        ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: PrimaryButton(
+                      title: "Skip",
+                      onTap: () {
+                        context.read<ModeBloc>().add(BookingModeEvent());
+                        Navigator.pushReplacementNamed(context, '/home');
+                      },
+                    ),
+                  ),
                   const SizedBox(height: 20),
                 ],
               ),
