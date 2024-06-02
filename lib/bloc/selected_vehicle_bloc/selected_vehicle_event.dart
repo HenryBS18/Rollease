@@ -3,7 +3,7 @@ part of 'selected_vehicle_bloc.dart';
 sealed class SelectedVehicleEvent {}
 
 class SetSelectedVehicleEvent extends SelectedVehicleEvent {
-  final int id;
+  final Vehicle vehicle;
 
-  SetSelectedVehicleEvent(this.id);
+  SetSelectedVehicleEvent(this.vehicle);
 }
