@@ -9,6 +9,7 @@ class TutorialBookingPage extends StatefulWidget {
 
 class _TutorialBookingPageState extends State<TutorialBookingPage> {
   bool isRent = false;
+  bool dontShowAgain = false;
 
   void toggleToLeft() {
     setState(() {
@@ -104,6 +105,17 @@ class _TutorialBookingPageState extends State<TutorialBookingPage> {
             onTap: () {
               Navigator.pushNamed(context, '/booking');
             },
+          ),
+          const SizedBox(height: 16),
+          Center(
+            child: MyCheckbox(
+              value: dontShowAgain,
+              onChanged: (value) {
+                setState(() {
+                  dontShowAgain = value!;
+                });
+              },
+            ),
           )
         ],
       ),
