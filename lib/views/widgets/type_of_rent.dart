@@ -48,7 +48,7 @@ class _TypeOfRentState extends State<TypeOfRent> {
           decorator: const DotsDecorator(
             color: Color.fromARGB(255, 215, 239, 185),
             size: Size(13.0, 11.0),
-            activeColor: Color(0xffA2C90C),
+            activeColor: CustomColors.primary,
             activeSize: Size(17.0, 17.0),
           ),
         ),

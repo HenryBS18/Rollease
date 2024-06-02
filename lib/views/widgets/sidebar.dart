@@ -1,13 +1,8 @@
 part of 'widgets.dart';
 
-class Sidebar extends StatefulWidget {
+class Sidebar extends StatelessWidget {
   const Sidebar({Key? key}) : super(key: key);
 
-  @override
-  State<Sidebar> createState() => _SidebarState();
-}
-
-class _SidebarState extends State<Sidebar> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -21,19 +16,21 @@ class _SidebarState extends State<Sidebar> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.7388,
-                      height: 132,
+                    Container(
+                      width: double.infinity,
+                      height: 120,
+                      // color: Colors.red,
+                      margin: const EdgeInsets.only(top: 8),
+                      padding: const EdgeInsets.only(left: 16),
                       child: Row(
                         children: [
                           Image.asset(
                             "assets/Logo Utama.png",
-                            width: 132,
+                            width: 96,
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 8),
                     const Padding(
                       padding: EdgeInsets.only(left: 16),
                       child: Column(

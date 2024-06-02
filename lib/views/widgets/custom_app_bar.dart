@@ -1,19 +1,11 @@
 part of 'widgets.dart';
 
-class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final IconData icon;
 
   const CustomAppBar({Key? key, required this.title, required this.icon}) : super(key: key);
 
-  @override
-  State<CustomAppBar> createState() => _CustomAppBarState();
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-}
-
-class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -31,17 +23,20 @@ class _CustomAppBarState extends State<CustomAppBar> {
       title: Row(
         children: [
           Icon(
-            widget.icon,
-            color: CustomColors.primary, // Ensure CustomColors.primary is defined in your project
+            icon,
+            color: CustomColors.primary,
             size: 32,
           ),
           const SizedBox(width: 8),
           Text(
-            widget.title,
+            title,
             style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
           ),
         ],
       ),
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

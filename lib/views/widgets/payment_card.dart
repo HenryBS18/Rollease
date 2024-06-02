@@ -14,7 +14,7 @@ class PaymentCard extends StatefulWidget {
 }
 
 class _PaymentCardState extends State<PaymentCard> {
-  final Color activeColor = const Color(0xffA2C90C);
+  final Color activeColor = CustomColors.primary;
   final Color inactiveColor = const Color(0xFFF0F8CF);
 
   Color iconBackgroundColor({required String title, required bool isActive}) {

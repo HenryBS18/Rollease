@@ -1,13 +1,8 @@
 part of 'widgets.dart';
 
-class DebitPaymentMenu extends StatefulWidget {
+class DebitPaymentMenu extends StatelessWidget {
   const DebitPaymentMenu({Key? key}) : super(key: key);
 
-  @override
-  _DebitPaymentMenuState createState() => _DebitPaymentMenuState();
-}
-
-class _DebitPaymentMenuState extends State<DebitPaymentMenu> {
   @override
   Widget build(BuildContext context) {
     return Column(

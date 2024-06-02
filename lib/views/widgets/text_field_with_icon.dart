@@ -29,14 +29,14 @@ class _TextFieldWithIconState extends State<TextFieldWithIcon> {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
-            color: Color(0xffA2C90C),
+            color: CustomColors.primary,
             width: 3,
           ),
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
-            color: Color(0xffA2C90C),
+            color: CustomColors.primary,
             width: 1,
           ),
         ),

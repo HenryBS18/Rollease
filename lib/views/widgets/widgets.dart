@@ -1,9 +1,14 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
+import 'package:rollease/bloc/selected_vehicle_bloc/selected_vehicle_bloc.dart';
 import 'package:rollease/models/dots_decorator.dart';
 import 'package:rollease/models/history.dart';
 import 'package:rollease/models/onboarding.dart';
+import 'package:rollease/models/station.dart';
+import 'package:rollease/models/vehicle.dart';
 import 'package:rollease/utils/custom_colors.dart';
 
 part 'sliding_switch.dart';
@@ -24,3 +29,11 @@ part 'primary_button.dart';
 part 'primary_icon_button.dart';
 part 'history_card.dart';
 part 'custom_animated_widget.dart';
+part 'custom_app_bar.dart';
+part 'border_corner.dart';
+part 'normal_mode_bottom_sheet.dart';
+part 'booking_mode_bottom_sheet.dart';
+part 'bill_info_text.dart';
+part 'rate.dart';
+part 'camera_error_dialog.dart';
+part 'vehicle_info_card.dart';
