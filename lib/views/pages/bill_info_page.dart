@@ -144,62 +144,72 @@ class BillInfoPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Container(
-                    width: double.infinity,
-                    height: 56,
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: CustomColors.primary,
-                      ),
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "OVO",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Color(0xff8444B7),
-                            fontWeight: FontWeight.w900,
-                          ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/payment');
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 56,
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(
+                          color: CustomColors.primary,
                         ),
-                        Text(
-                          "Rp 320.000",
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                        )
-                      ],
+                      ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "OVO",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xff8444B7),
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                          Text(
+                            "Rp 320.000",
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.only(left: 12),
-                    clipBehavior: Clip.hardEdge,
-                    decoration: BoxDecoration(
-                      color: CustomColors.secondary,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "USE PROMO OR VOUCHER HERE",
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w900,
-                            color: Color(0xff5E7408),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/promo');
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.only(left: 12),
+                      clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                        color: CustomColors.secondary,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "USE PROMO OR VOUCHER HERE",
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w900,
+                              color: Color(0xff5E7408),
+                            ),
                           ),
-                        ),
-                        Container(
-                          width: 84,
-                          height: 56,
-                          color: const Color(0xff5E7408),
-                          padding: const EdgeInsets.all(8),
-                          child: Image.asset("assets/disc.png"),
-                        )
-                      ],
+                          Container(
+                            width: 84,
+                            height: 56,
+                            color: const Color(0xff5E7408),
+                            padding: const EdgeInsets.all(8),
+                            child: Image.asset("assets/disc.png"),
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
