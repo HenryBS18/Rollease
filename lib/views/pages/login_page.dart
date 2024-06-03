@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       FadeInUp(
-                        duration: const Duration(milliseconds: 1000),
+                        duration: const Duration(milliseconds: 1100),
                         child: const Text(
                           "Welcome Back!!",
                           style: TextStyle(
@@ -101,38 +101,54 @@ class _LoginPageState extends State<LoginPage> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Email Address',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    TextFormField(
-                      focusNode: _focusNodeEmail,
-                      decoration: InputDecoration(
-                        hintText: 'henry@gmail.com',
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(
-                            color: CustomColors.primary,
-                            width: 3,
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 1300),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Email Address',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
+                          const SizedBox(height: 2),
+                          TextFormField(
+                            focusNode: _focusNodeEmail,
+                            decoration: InputDecoration(
+                              hintText: 'henry@gmail.com',
+                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: const BorderSide(
+                                  color: CustomColors.primary,
+                                  width: 3,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(height: 16),
-                    const Text(
-                      'Password',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 1300),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Password',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          PasswordField(focusNode: _focusNodePassword),
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 2),
-                    PasswordField(focusNode: _focusNodePassword),
                   ],
                 ),
                 const SizedBox(height: 32),
