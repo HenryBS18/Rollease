@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 part of 'widgets.dart';
 
 class NormalModeBottomSheet extends StatefulWidget {
@@ -296,7 +298,7 @@ class _NormalModeBottomSheetState extends State<NormalModeBottomSheet> {
                             Center(
                               child: PrimaryButton(
                                 title: "Book",
-                                onTap: () {
+                                onTap: () async {
                                   if (state is SelectedVehicleInitial) {
                                     showDialog(
                                       context: context,
@@ -326,6 +328,13 @@ class _NormalModeBottomSheetState extends State<NormalModeBottomSheet> {
                                         );
                                       },
                                     );
+                                    return;
+                                  }
+
+                                  SharedPreferences pref = await SharedPreferences.getInstance();
+
+                                  if (pref.getBool("dont-show-tutorial") != null) {
+                                    Navigator.pushNamed(context, '/booking');
                                     return;
                                   }
 

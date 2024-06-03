@@ -9,7 +9,7 @@ class TutorialBookingPage extends StatefulWidget {
 
 class _TutorialBookingPageState extends State<TutorialBookingPage> {
   bool isRent = false;
-  bool dontShowAgain = false;
+  bool dontShowAgainCheck = false;
 
   void toggleToLeft() {
     setState(() {
@@ -65,6 +65,11 @@ class _TutorialBookingPageState extends State<TutorialBookingPage> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
@@ -109,14 +114,18 @@ class _TutorialBookingPageState extends State<TutorialBookingPage> {
           const SizedBox(height: 16),
           Center(
             child: MyCheckbox(
-              value: dontShowAgain,
-              onChanged: (value) {
-                setState(() {
-                  dontShowAgain = value!;
-                });
+              value: dontShowAgainCheck,
+              onChanged: (value) async {
+                dontShowAgainCheck = value!;
+                setState(() {});
+                if (value == true) {
+                  SharedPreferences pref = await SharedPreferences.getInstance();
+                  pref.setBool("dont-show-tutorial", value);
+                  return;
+                }
               },
             ),
-          )
+          ),
         ],
       ),
     );
