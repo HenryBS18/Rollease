@@ -7,3 +7,5 @@ class SetSelectedVehicleEvent extends SelectedVehicleEvent {
 
   SetSelectedVehicleEvent(this.vehicle);
 }
+
+class ResetSelectedVehicleEvent extends SelectedVehicleEvent {}

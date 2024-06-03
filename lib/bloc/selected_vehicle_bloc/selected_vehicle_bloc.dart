@@ -9,5 +9,9 @@ class SelectedVehicleBloc extends Bloc<SelectedVehicleEvent, SelectedVehicleStat
     on<SetSelectedVehicleEvent>((event, emit) {
       emit(SelectedVehicle(event.vehicle));
     });
+
+    on<ResetSelectedVehicleEvent>((event, emit) {
+      emit(SelectedVehicleInitial());
+    });
   }
 }
