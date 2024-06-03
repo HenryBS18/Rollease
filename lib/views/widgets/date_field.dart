@@ -44,7 +44,6 @@ class _DateFieldState extends State<DateField> {
         decoration: const InputDecoration(
           contentPadding: EdgeInsets.only(left: 20, right: 20),
           border: InputBorder.none,
-          focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: CustomColors.primary)),
           hintText: 'DD/MM/YYYY',
           suffixIcon: Icon(Icons.calendar_today),
           hintStyle: TextStyle(fontSize: 14, color: Colors.grey),

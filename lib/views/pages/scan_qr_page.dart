@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 part of 'pages.dart';
 
 class ScanQrPage extends StatefulWidget {
@@ -131,8 +133,16 @@ class _ScanQrPageState extends State<ScanQrPage> {
                 const SizedBox(height: 24),
                 PrimaryButton(
                   title: "Next",
-                  onTap: () {
+                  onTap: () async {
                     controller!.stopCamera();
+
+                    SharedPreferences pref = await SharedPreferences.getInstance();
+                    if (pref.getBool("dont-show-htr") != null) {
+                      context.read<ModeBloc>().add(BookingModeEvent());
+                      Navigator.pushNamed(context, '/home');
+                      return;
+                    }
+
                     Navigator.pushNamed(context, '/how-to-ride');
                   },
                 )

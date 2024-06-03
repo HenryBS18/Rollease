@@ -129,7 +129,9 @@ class _OnBoardingPage extends State<OnBoardingPage> {
           const SizedBox(height: 48),
           PrimaryButton(
             title: "Get started",
-            onTap: () {
+            onTap: () async {
+              SharedPreferences pref = await SharedPreferences.getInstance();
+              pref.setBool("skip-onboarding", true);
               Navigator.pushReplacementNamed(context, '/login');
             },
           ),

@@ -171,10 +171,14 @@ class _HowToRidePage extends State<HowToRidePage> {
               const SizedBox(height: 16),
               MyCheckbox(
                 value: dontShowAgain,
-                onChanged: (value) {
-                  setState(() {
-                    dontShowAgain = value!;
-                  });
+                onChanged: (value) async {
+                  dontShowAgain = value!;
+                  setState(() {});
+                  if (value == true) {
+                    SharedPreferences pref = await SharedPreferences.getInstance();
+                    pref.setBool("dont-show-htr", value);
+                    return;
+                  }
                 },
               )
             ],

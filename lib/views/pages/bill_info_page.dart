@@ -223,6 +223,7 @@ class BillInfoPage extends StatelessWidget {
             height: 56,
             onTap: () {
               context.read<ModeBloc>().add(NormalModeEvent());
+              context.read<SelectedVehicleBloc>().add(ResetSelectedVehicleEvent());
               Navigator.pushNamed(context, '/home');
             },
           )

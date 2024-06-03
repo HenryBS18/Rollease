@@ -11,8 +11,18 @@ class _RegisterPageState extends State<RegisterPage> {
   final FocusNode _focusNodeName = FocusNode();
   final FocusNode _focusNodeEmail = FocusNode();
   final FocusNode _focusNodePassword = FocusNode();
+  final ScrollController _scrollController = ScrollController();
 
   bool isChecked = false;
+  bool isFocused = false;
+
+  void _scrollToEnd() {
+    _scrollController.animateTo(
+      _scrollController.position.maxScrollExtent,
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   void initState() {
@@ -23,13 +33,19 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void _onFocusChange() {
-    setState(() {});
+    setState(() {
+      isFocused = _focusNodeName.hasFocus || _focusNodeEmail.hasFocus || _focusNodePassword.hasFocus;
+
+      if (isFocused) _scrollToEnd();
+    });
   }
 
   void _unfocusAllFields() {
-    _focusNodeName.unfocus();
-    _focusNodeEmail.unfocus();
-    _focusNodePassword.unfocus();
+    setState(() {
+      _focusNodeName.unfocus();
+      _focusNodeEmail.unfocus();
+      _focusNodePassword.unfocus();
+    });
   }
 
   @override
@@ -51,135 +67,173 @@ class _RegisterPageState extends State<RegisterPage> {
         _unfocusAllFields();
       },
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.only(top: 32),
-          child: Container(
-            padding: const EdgeInsets.only(left: 32, right: 32, top: 24),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.7,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        FadeInUp(
-                          duration: const Duration(milliseconds: 1000),
-                          child: const Text(
-                            "Create Account",
+        body: Container(
+          padding: EdgeInsets.only(left: 32, right: 32, top: isFocused ? 40 : 48),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            controller: _scrollController,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                !isFocused
+                    ? SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.7,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            FadeInUp(
+                              duration: const Duration(milliseconds: 1100),
+                              child: const Text(
+                                "Create Account",
+                                style: TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            FadeInUp(
+                              duration: const Duration(milliseconds: 1200),
+                              child: Text(
+                                "Silahkan mengisi kelengkapan data untuk membuat akun",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey[700],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    : const SizedBox(),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    !isFocused
+                        ? FadeInUp(
+                            duration: const Duration(milliseconds: 1300),
+                            child: Image.asset(
+                              'assets/LoginSignup.png',
+                            ),
+                          )
+                        : const SizedBox(),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 1300),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Full Name',
                             style: TextStyle(
-                              fontSize: 28,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
-                        FadeInUp(
-                          duration: const Duration(milliseconds: 1200),
-                          child: Text(
-                            "Silahkan mengisi kelengkapan data untuk membuat akun",
+                          const SizedBox(height: 2),
+                          SizedBox(
+                            height: 54,
+                            child: TextFormField(
+                              focusNode: _focusNodeName,
+                              style: const TextStyle(fontSize: 14),
+                              decoration: InputDecoration(
+                                hintText: 'John Doe',
+                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: CustomColors.primary,
+                                    width: 3,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 1300),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Email Address',
                             style: TextStyle(
                               fontSize: 16,
-                              color: Colors.grey[700],
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 2),
+                          SizedBox(
+                            height: 54,
+                            child: TextFormField(
+                              focusNode: _focusNodeEmail,
+                              style: const TextStyle(fontSize: 14),
+                              decoration: InputDecoration(
+                                hintText: 'henry@gmail.com',
+                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: const BorderSide(
+                                    color: CustomColors.primary,
+                                    width: 3,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FadeInUp(
-                        duration: const Duration(milliseconds: 1300),
-                        child: Image.asset(
-                          'assets/LoginSignup.png',
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 4),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Full Name',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      SizedBox(
-                        height: 54,
-                        child: TextFormField(
-                          focusNode: _focusNodeName,
-                          style: const TextStyle(fontSize: 14),
-                          decoration: InputDecoration(
-                            hintText: 'John Doe',
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: CustomColors.primary,
-                                width: 3,
-                              ),
+                    const SizedBox(height: 8),
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 1300),
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Birth Date',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
+                          SizedBox(height: 2),
+                          SizedBox(
+                            height: 54,
+                            child: DateField(),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        'Email Address',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      SizedBox(
-                        height: 54,
-                        child: TextFormField(
-                          focusNode: _focusNodeEmail,
-                          style: const TextStyle(fontSize: 14),
-                          decoration: InputDecoration(
-                            hintText: 'henry@gmail.com',
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: const BorderSide(
-                                color: CustomColors.primary,
-                                width: 3,
-                              ),
+                    ),
+                    const SizedBox(height: 8),
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 1300),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Password',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
+                          const SizedBox(height: 2),
+                          PasswordField(focusNode: _focusNodePassword),
+                        ],
                       ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        'Birth Date',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      const SizedBox(
-                        height: 54,
-                        child: DateField(),
-                      ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        'Password',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 2),
-                      PasswordField(focusNode: _focusNodePassword),
-                      Row(
+                    ),
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 1300),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           InkWell(
@@ -217,53 +271,76 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 4),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FadeInUp(
-                        duration: const Duration(milliseconds: 1400),
-                        child: PrimaryIconButton(
-                          title: "Create Account",
-                          icon: Icons.person_add,
-                          width: 260,
-                          onTap: () {
-                            Navigator.pushNamed(context, '/login');
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  FadeInUp(
-                    duration: const Duration(milliseconds: 1540),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        const Text(
-                          "Already have an account? ",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/login');
-                          },
-                          child: const Text(
-                            "Login",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: CustomColors.primary,
-                            ),
-                          ),
-                        )
-                      ],
                     ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 1400),
+                      child: PrimaryIconButton(
+                        title: "Create Account",
+                        icon: Icons.person_add,
+                        width: 260,
+                        onTap: () {
+                          if (isChecked) {
+                            Navigator.pushNamed(context, '/login');
+                            return;
+                          }
+
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const AlertDialog(
+                                title: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [Icon(Icons.close, size: 32)],
+                                ),
+                                content: Text(
+                                  "Setujui syarat dan ketentuan",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                FadeInUp(
+                  duration: const Duration(milliseconds: 1540),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Text(
+                        "Already have an account? ",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/login');
+                        },
+                        child: const Text(
+                          "Login",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: CustomColors.primary,
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

@@ -28,6 +28,7 @@ import 'package:rollease/models/vehicle.dart';
 import 'package:rollease/utils/custom_colors.dart';
 import 'package:rollease/utils/utils.dart';
 import 'package:rollease/views/widgets/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 part 'splash_screen.dart';
