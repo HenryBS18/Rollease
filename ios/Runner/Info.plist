@@ -5,9 +5,17 @@
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>This app needs camera access to scan QR codes</string>
+	<string>camera</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>microphone</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Reason why we need access to your location</string>
+	<string>Need location when in use</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Always and when in use!</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Older devices need location.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Can I have location always?</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
