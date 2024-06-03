@@ -33,9 +33,9 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/home',
+        initialRoute: '/ ',
         routes: {
-          // '/': (context) => const SplashScreen(),
+          '/': (context) => const SplashScreen(),
           '/home': (context) => const HomePage(),
           '/payment': (context) => const PaymentPage(),
           '/promo': (context) => const PromoPage(),

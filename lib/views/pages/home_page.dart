@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     initCenterLocation();
+    requestStoragePermission();
 
     List<Vehicle> vehicleList = [
       Vehicle(id: 1, name: "Scooter A", type: "Scooter", inUse: false, battery: 100),
@@ -104,6 +105,20 @@ class _HomePageState extends State<HomePage> {
         vehicleList: vehicleList,
       )
     ];
+  }
+
+  void requestStoragePermission() async {
+    if (!kIsWeb) {
+      var status = await Permission.storage.status;
+      if (!status.isGranted) {
+        await Permission.storage.request();
+      }
+
+      var cameraStatus = await Permission.camera.status;
+      if (!cameraStatus.isGranted) {
+        await Permission.camera.request();
+      }
+    }
   }
 
   @override
