@@ -93,7 +93,6 @@ class _ScanQrPageState extends State<ScanQrPage> {
                             await controller?.toggleFlash();
                             setState(() {});
                           } catch (e) {
-                            // ignore: use_build_context_synchronously
                             showModalBottomSheet(
                               context: context,
                               builder: (context) {
