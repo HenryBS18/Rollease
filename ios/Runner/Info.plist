@@ -6,8 +6,6 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>camera</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>microphone</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Need location when in use</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
