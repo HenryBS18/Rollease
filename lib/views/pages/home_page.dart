@@ -109,6 +109,11 @@ class _HomePageState extends State<HomePage> {
 
   void requestStoragePermission() async {
     if (!kIsWeb) {
+      var locationStatus = await Permission.location.status;
+      if (!locationStatus.isGranted) {
+        await Permission.location.request();
+      }
+
       var status = await Permission.storage.status;
       if (!status.isGranted) {
         await Permission.storage.request();
@@ -118,6 +123,7 @@ class _HomePageState extends State<HomePage> {
       if (!cameraStatus.isGranted) {
         await Permission.camera.request();
       }
+      setState(() {});
     }
   }
 
