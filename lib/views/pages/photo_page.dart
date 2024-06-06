@@ -19,11 +19,17 @@ class TakePictureScreenState extends State<PhotoPage> {
     _controller = CameraController(
       cameras.first,
       ResolutionPreset.ultraHigh,
+      enableAudio: false,
+      imageFormatGroup: ImageFormatGroup.jpeg,
     );
 
     setState(() {
       _initializeControllerFuture = _controller.initialize();
     });
+
+    await _initializeControllerFuture;
+
+    await _controller.setFlashMode(FlashMode.off);
   }
 
   @override

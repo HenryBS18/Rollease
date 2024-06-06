@@ -86,14 +86,6 @@ class Sidebar extends StatelessWidget {
                       },
                     ),
                     const Divider(),
-                    ListTile(
-                      leading: const Icon(Icons.settings),
-                      title: const Text("Settings"),
-                      onTap: () {
-                        Navigator.pushNamed(context, '/');
-                      },
-                    ),
-                    const Divider(),
                   ],
                 ),
                 Padding(

@@ -13,6 +13,7 @@ class _ScanQrPageState extends State<ScanQrPage> {
   Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+  bool isLoading = false;
 
   @override
   void reassemble() {
@@ -35,7 +36,7 @@ class _ScanQrPageState extends State<ScanQrPage> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            // Navigator.pop(context);
+            Navigator.pop(context);
           },
           icon: const Icon(
             Icons.close,
@@ -44,112 +45,114 @@ class _ScanQrPageState extends State<ScanQrPage> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 32, right: 32, top: 64),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 32, right: 32, top: 64),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  "SCAN",
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: CustomColors.primary),
-                ),
-                const Text(
-                  "The QR Code on the Scooter",
-                  style: TextStyle(fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(height: 64),
-                Container(
-                  width: 250,
-                  height: 250,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  clipBehavior: Clip.hardEdge,
-                  child: BorderCorner(child: _buildQrView(context)),
-                ),
-                const SizedBox(height: 48),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.keyboard_outlined,
-                          color: Color(0xff6d811f),
-                        ),
-                        color: Colors.red,
-                        iconSize: 48,
-                        style: const ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(Color.fromARGB(127, 163, 201, 12)),
-                        ),
+                Column(
+                  children: [
+                    const Text(
+                      "SCAN",
+                      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: CustomColors.primary),
+                    ),
+                    const Text(
+                      "The QR Code on the Scooter",
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 64),
+                    Container(
+                      width: 250,
+                      height: 250,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      IconButton(
-                        onPressed: () async {
-                          try {
-                            await controller?.toggleFlash();
-                            setState(() {});
-                          } catch (e) {
-                            // ignore: use_build_context_synchronously
-                            showModalBottomSheet(
-                              context: context,
-                              builder: (context) {
-                                return const Row(
-                                  children: [
-                                    Center(
-                                      child: Text("Flash not found"),
-                                    )
-                                  ],
+                      clipBehavior: Clip.hardEdge,
+                      child: BorderCorner(child: _buildQrView(context)),
+                    ),
+                    const SizedBox(height: 48),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            onPressed: () async {
+                              controller!.stopCamera();
+
+                              SharedPreferences pref = await SharedPreferences.getInstance();
+                              if (pref.getBool("dont-show-htr") != null) {
+                                context.read<ModeBloc>().add(BookingModeEvent());
+                                Navigator.pushNamed(context, '/home');
+                                return;
+                              }
+
+                              Navigator.pushNamed(context, '/how-to-ride');
+                            },
+                            icon: const Icon(
+                              Icons.keyboard_outlined,
+                              color: Color(0xff6d811f),
+                            ),
+                            color: Colors.red,
+                            iconSize: 48,
+                            style: const ButtonStyle(
+                              backgroundColor: MaterialStatePropertyAll(Color.fromARGB(127, 163, 201, 12)),
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () async {
+                              try {
+                                await controller?.toggleFlash();
+                                setState(() {});
+                              } catch (e) {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) {
+                                    return const Row(
+                                      children: [
+                                        Center(
+                                          child: Text("Flash not found"),
+                                        )
+                                      ],
+                                    );
+                                  },
                                 );
-                              },
-                            );
-                          }
-                        },
-                        icon: const Icon(
-                          Icons.flashlight_on_outlined,
-                          color: Color(0xff6d811f),
-                        ),
-                        color: Colors.red,
-                        iconSize: 48,
-                        style: const ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(Color.fromARGB(127, 163, 201, 12)),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                result != null
-                    ? SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.7,
-                        child: Text(
-                          'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}',
-                          style: const TextStyle(overflow: TextOverflow.clip),
-                        ),
-                      )
-                    : const Text('kosong'),
-                const SizedBox(height: 24),
-                PrimaryButton(
-                  title: "Next",
-                  onTap: () async {
-                    controller!.stopCamera();
-
-                    SharedPreferences pref = await SharedPreferences.getInstance();
-                    if (pref.getBool("dont-show-htr") != null) {
-                      context.read<ModeBloc>().add(BookingModeEvent());
-                      Navigator.pushNamed(context, '/home');
-                      return;
-                    }
-
-                    Navigator.pushNamed(context, '/how-to-ride');
-                  },
+                              }
+                            },
+                            icon: const Icon(
+                              Icons.flashlight_on_outlined,
+                              color: Color(0xff6d811f),
+                            ),
+                            color: Colors.red,
+                            iconSize: 48,
+                            style: const ButtonStyle(
+                              backgroundColor: MaterialStatePropertyAll(Color.fromARGB(127, 163, 201, 12)),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
                 )
               ],
             ),
-          ],
-        ),
+          ),
+          isLoading
+              ? Positioned.fill(
+                  child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: Color.fromARGB(125, 0, 0, 0),
+                  ),
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ))
+              : const SizedBox()
+        ],
       ),
     );
   }
@@ -166,10 +169,30 @@ class _ScanQrPageState extends State<ScanQrPage> {
     setState(() {
       this.controller = controller;
     });
-    controller.scannedDataStream.listen((scanData) {
+    controller.scannedDataStream.listen((scanData) async {
       setState(() {
         result = scanData;
+
+        final res = 'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}';
       });
+
+      if (result != null) {
+        controller.pauseCamera();
+        isLoading = true;
+        await Future.delayed(const Duration(seconds: 2));
+        isLoading = false;
+
+        controller.stopCamera();
+
+        SharedPreferences pref = await SharedPreferences.getInstance();
+        if (pref.getBool("dont-show-htr") != null) {
+          context.read<ModeBloc>().add(BookingModeEvent());
+          Navigator.pushNamed(context, '/home');
+          return;
+        }
+
+        Navigator.pushNamed(context, '/how-to-ride');
+      }
     });
   }
 
