@@ -99,7 +99,9 @@ class Sidebar extends StatelessWidget {
                       "Logout",
                       style: TextStyle(color: Color(0xffFC6464), fontWeight: FontWeight.bold),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
                   ),
                 ),
               ],
