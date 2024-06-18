@@ -1,18 +1,18 @@
 part of 'widgets.dart';
 
 class DateField extends StatefulWidget {
-  const DateField({Key? key}) : super(key: key);
+  final TextEditingController dateController;
+
+  const DateField({Key? key, required this.dateController}) : super(key: key);
 
   @override
   _DateFieldState createState() => _DateFieldState();
 }
 
 class _DateFieldState extends State<DateField> {
-  final TextEditingController _textEditingController = TextEditingController();
-
   @override
   void dispose() {
-    _textEditingController.dispose();
+    widget.dateController.dispose();
     super.dispose();
   }
 
@@ -26,7 +26,7 @@ class _DateFieldState extends State<DateField> {
 
     if (pickedDate != null) {
       setState(() {
-        _textEditingController.text = DateFormat('dd/MM/yyyy').format(pickedDate);
+        widget.dateController.text = DateFormat('dd/MM/yyyy').format(pickedDate);
       });
     }
   }
@@ -38,7 +38,7 @@ class _DateFieldState extends State<DateField> {
       child: TextFormField(
         readOnly: true,
         style: const TextStyle(fontSize: 16, color: Colors.black),
-        controller: _textEditingController,
+        controller: widget.dateController,
         textAlignVertical: TextAlignVertical.center,
         onTap: () => _selectDate(context),
         decoration: const InputDecoration(
