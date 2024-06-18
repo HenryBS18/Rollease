@@ -2,8 +2,8 @@ part of 'current_station_bloc.dart';
 
 sealed class CurrentStationEvent {}
 
-class GetCurrentStationEvent extends CurrentStationEvent {
-  final List<Station> station;
+class AddCurrentStationEvent extends CurrentStationEvent {
+  final Station station;
 
-  GetCurrentStationEvent(this.station);
+  AddCurrentStationEvent(this.station);
 }
