@@ -30,15 +30,20 @@ class StationService {
             imageUrl: rawVehicle['imageUrl'],
             battery: rawVehicle['battery'],
             inUse: rawVehicle['inUse'],
-            currentCoordinates:
-                LatLng(rawVehicle['currentCoordinates']['latitude'], rawVehicle['currentCoordinates']['longitude']),
+            currentCoordinates: LatLng(
+              rawVehicle['currentCoordinates']['latitude'],
+              rawVehicle['currentCoordinates']['longitude'],
+            ),
           ));
         }
 
         stationList.add(Station(
           id: rawStation['id'],
           name: rawStation['name'],
-          coordinates: LatLng(rawStation['coordinates']['latitude'], rawStation['coordinates']['longitude']),
+          coordinates: LatLng(
+            rawStation['coordinates']['latitude'],
+            rawStation['coordinates']['longitude'],
+          ),
           image: rawStation['imageUrl'],
           vehicleList: vehicleList,
         ));
