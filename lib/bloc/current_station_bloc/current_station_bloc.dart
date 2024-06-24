@@ -8,7 +8,6 @@ class CurrentStationBloc extends Bloc<CurrentStationEvent, CurrentStationState> 
   CurrentStationBloc() : super(CurrentStationInitial()) {
     on<AddCurrentStationEvent>((event, emit) {
       emit(CurrentStation(event.station));
-      print(event.station.name);
     });
   }
 }
