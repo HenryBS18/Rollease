@@ -102,7 +102,7 @@ class _BookingPageState extends State<BookingPage> {
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                (currentStationState is CurrentStation) ? currentStationState.station[0].name : '',
+                                (currentStationState is CurrentStation) ? currentStationState.station.name : '',
                                 style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(height: 4),
@@ -114,7 +114,7 @@ class _BookingPageState extends State<BookingPage> {
                                     color: CustomColors.primary,
                                   ),
                                   Text(
-                                    (currentStationState is CurrentStation) ? currentStationState.station[0].place : '',
+                                    (currentStationState is CurrentStation) ? 'Station ${currentStationState.station.name}' : '',
                                     style: const TextStyle(
                                       color: CustomColors.primary,
                                       fontSize: 12,

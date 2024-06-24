@@ -2,14 +2,15 @@ part of 'widgets.dart';
 
 class PasswordField extends StatefulWidget {
   final FocusNode focusNode;
-  const PasswordField({Key? key, required this.focusNode}) : super(key: key);
+  final TextEditingController passwordController;
+
+  const PasswordField({Key? key, required this.focusNode, required this.passwordController}) : super(key: key);
 
   @override
   _PasswordFieldState createState() => _PasswordFieldState();
 }
 
 class _PasswordFieldState extends State<PasswordField> {
-  final TextEditingController _textEditingController = TextEditingController();
   bool _obscureText = true;
 
   void _togglePasswordVisibility() {
@@ -20,7 +21,7 @@ class _PasswordFieldState extends State<PasswordField> {
 
   @override
   void dispose() {
-    _textEditingController.dispose();
+    widget.passwordController.dispose();
     widget.focusNode.dispose();
     super.dispose();
   }
@@ -28,7 +29,7 @@ class _PasswordFieldState extends State<PasswordField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: _textEditingController,
+      controller: widget.passwordController,
       focusNode: widget.focusNode,
       obscureText: _obscureText,
       style: const TextStyle(fontSize: 14),

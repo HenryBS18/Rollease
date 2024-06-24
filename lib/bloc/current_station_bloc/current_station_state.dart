@@ -5,7 +5,7 @@ sealed class CurrentStationState {}
 final class CurrentStationInitial extends CurrentStationState {}
 
 final class CurrentStation extends CurrentStationState {
-  final List<Station> station;
+  final Station station;
 
   CurrentStation(this.station);
 }

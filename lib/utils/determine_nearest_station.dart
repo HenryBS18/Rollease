@@ -10,8 +10,8 @@ Future<void> determineNearestStation(List<Station> stationList, Function(Map nea
     double distanceInMeters = Geolocator.distanceBetween(
       currentPosition.latitude,
       currentPosition.longitude,
-      station.latLng.latitude,
-      station.latLng.longitude,
+      station.coordinates.latitude,
+      station.coordinates.longitude,
     );
 
     // Convert distance to kilometers

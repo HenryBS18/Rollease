@@ -6,9 +6,8 @@ part 'current_station_state.dart';
 
 class CurrentStationBloc extends Bloc<CurrentStationEvent, CurrentStationState> {
   CurrentStationBloc() : super(CurrentStationInitial()) {
-    on<GetCurrentStationEvent>((event, emit) {
+    on<AddCurrentStationEvent>((event, emit) {
       emit(CurrentStation(event.station));
-      print("udah");
     });
   }
 }

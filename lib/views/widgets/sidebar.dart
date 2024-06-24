@@ -31,15 +31,19 @@ class Sidebar extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 16),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "Hi Henry",
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                          BlocBuilder<AuthBloc, AuthState>(
+                            builder: (context, state) {
+                              return Text(
+                                "Hi ${state is UserData ? state.user.name : ''}",
+                                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                              );
+                            },
                           ),
                         ],
                       ),
@@ -99,7 +103,10 @@ class Sidebar extends StatelessWidget {
                       "Logout",
                       style: TextStyle(color: Color(0xffFC6464), fontWeight: FontWeight.bold),
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushReplacementNamed(context, '/login');
+                      context.read<AuthBloc>().add(RemoveTokenEvent());
+                    },
                   ),
                 ),
               ],
