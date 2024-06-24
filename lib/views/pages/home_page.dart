@@ -53,6 +53,25 @@ class _HomePageState extends State<HomePage> {
 
     initCenterLocation();
     context.read<AuthBloc>().add(FetchUserEvent());
+
+    Timer(
+      const Duration(milliseconds: 1),
+      () async {
+        SharedPreferences pref = await SharedPreferences.getInstance();
+
+        if (pref.getBool("rating") == true) {
+          // ignore: use_build_context_synchronously
+          showDialog(
+            context: context,
+            builder: (context) {
+              return const RatingAlert();
+            },
+          );
+        }
+
+        pref.remove("rating");
+      },
+    );
   }
 
   @override

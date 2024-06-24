@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:five_pointed_star/five_pointed_star.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:rollease/bloc/auth_bloc/auth_bloc.dart';
 import 'package:rollease/bloc/selected_vehicle_bloc/selected_vehicle_bloc.dart';
@@ -36,7 +36,7 @@ part 'border_corner.dart';
 part 'normal_mode_bottom_sheet.dart';
 part 'booking_mode_bottom_sheet.dart';
 part 'bill_info_text.dart';
-part 'rate.dart';
+part 'rating_alert.dart';
 part 'camera_error_dialog.dart';
 part 'vehicle_info_card.dart';
 part 'my_checkbox.dart';
