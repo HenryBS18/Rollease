@@ -22,19 +22,19 @@ class _OnBoardingPage extends State<OnBoardingPage> {
     List<OnboardingItem> listOfItems = [
       OnboardingItem(
         img: "assets/Icon3.png",
-        title: "Pesan melalui aplikasi",
+        title: "Book through the Rollease app",
       ),
       OnboardingItem(
         img: "assets/Icon4.png",
-        title: "Pilih tipe kendaraan",
+        title: "Choose your preferred type of electric vehicle",
       ),
       OnboardingItem(
         img: "assets/Icon4.png",
-        title: "Scan QR Code",
+        title: "Scan the electric vehicle's QR code",
       ),
       OnboardingItem(
         img: "assets/Icon4(1).png",
-        title: "Mengendarai",
+        title: "Ride the electric vehicle comfortably and freely",
       ),
     ];
 
@@ -90,7 +90,7 @@ class _OnBoardingPage extends State<OnBoardingPage> {
                           textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                             color: Colors.black,
-                            fontSize: 26,
+                            fontSize: 22,
                           ),
                         ),
                       ),

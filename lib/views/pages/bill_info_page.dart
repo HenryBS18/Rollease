@@ -221,9 +221,11 @@ class BillInfoPage extends StatelessWidget {
             title: "Pay",
             width: MediaQuery.of(context).size.width * 0.9,
             height: 56,
-            onTap: () {
+            onTap: () async {
               context.read<ModeBloc>().add(NormalModeEvent());
               context.read<SelectedVehicleBloc>().add(ResetSelectedVehicleEvent());
+              SharedPreferences pref = await SharedPreferences.getInstance();
+              pref.setBool("rating", true);
               Navigator.pushNamed(context, '/home');
             },
           )

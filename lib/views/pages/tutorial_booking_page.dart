@@ -11,31 +11,19 @@ class _TutorialBookingPageState extends State<TutorialBookingPage> {
   bool isRent = false;
   bool dontShowAgainCheck = false;
 
-  void toggleToLeft() {
-    setState(() {
-      isRent = false;
-    });
-  }
-
-  void toggleToRight() {
-    setState(() {
-      isRent = true;
-    });
-  }
-
   final List<OnBoarding> argoOnBoardingList = [
     OnBoarding(
-      title: 'Ambil tipe kendaraan yang anda inginkan',
+      title: 'Pick the type of electric vehicle you want',
       description: '',
       image: 'assets/TORArgo1.png',
     ),
     OnBoarding(
-      title: 'Gunakan kendaraan listrik tersebut secara bebas di kawasan CPI',
+      title: 'Use the electric vehicle freely in the CPI area',
       description: ' ',
       image: 'assets/TORArgoo2.png',
     ),
     OnBoarding(
-      title: 'Bayar sesuai dengan total durasi pemakaian kendaraan listrik.',
+      title: 'Pay according to the total duration of use of the electric vehicle',
       description: ' ',
       image: 'assets/TORArgo3.png',
     ),
@@ -43,22 +31,22 @@ class _TutorialBookingPageState extends State<TutorialBookingPage> {
 
   final List<OnBoarding> rentOnBoardingList = [
     OnBoarding(
-      title: 'Ambil tipe kendaraan listrik yang anda inginkan',
+      title: 'Take the electric vehicle that you want',
       description: ' ',
       image: 'assets/TORArgo1.png',
     ),
     OnBoarding(
-      title: 'Pilih lama durasi yang anda inginkan untuk menyewa kendaraan listrik',
+      title: 'Choose the length of time you would like to rent the electric vehicle.',
       description: ' ',
       image: 'assets/torargo2.png',
     ),
     OnBoarding(
-      title: 'Gunakan kendaraan listrik tersebut secara bebas di kawasan CPI',
+      title: 'Use the electric vehicle freely in the CPI area',
       description: ' ',
       image: 'assets/TORArgoo2.png',
     ),
     OnBoarding(
-      title: 'Bayar sesuai dengan durasi yang telah dipilih.',
+      title: 'Pay according to the duration that has been selected.',
       description: ' ',
       image: 'assets/TORArgo3.png',
     ),
@@ -87,7 +75,7 @@ class _TutorialBookingPageState extends State<TutorialBookingPage> {
             value: isRent,
             onChanged: (value) {
               setState(() {
-                isRent = !value;
+                isRent = value;
               });
             },
             onTap: () {},
