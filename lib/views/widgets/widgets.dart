@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
+import 'package:rollease/bloc/auth_bloc/auth_bloc.dart';
 import 'package:rollease/bloc/selected_vehicle_bloc/selected_vehicle_bloc.dart';
 import 'package:rollease/models/dots_decorator.dart';
 import 'package:rollease/models/history.dart';

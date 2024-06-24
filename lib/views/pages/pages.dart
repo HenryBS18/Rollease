@@ -15,6 +15,7 @@ import 'package:intl/intl.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:rollease/bloc/auth_bloc/auth_bloc.dart';
 import 'package:rollease/bloc/current_station_bloc/current_station_bloc.dart';
 import 'package:rollease/bloc/mode_bloc/mode_bloc.dart';
 import 'package:rollease/bloc/photo_bloc/photo_bloc.dart';

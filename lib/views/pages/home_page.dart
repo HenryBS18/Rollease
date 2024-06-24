@@ -39,6 +39,7 @@ class _HomePageState extends State<HomePage> {
               stationList.insert(0, station);
               currentIndex = 0;
               _mapController.move(station.coordinates, 16.5);
+              context.read<CurrentStationBloc>().add(AddCurrentStationEvent(stationList[0]));
             });
           }
         }
@@ -51,14 +52,11 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     initCenterLocation();
+    context.read<AuthBloc>().add(FetchUserEvent());
   }
 
   @override
   Widget build(BuildContext context) {
-    if (stationList.isNotEmpty) {
-      context.read<CurrentStationBloc>().add(AddCurrentStationEvent(stationList[0]));
-    }
-
     return Scaffold(
       key: _scaffoldState,
       drawer: const Sidebar(),

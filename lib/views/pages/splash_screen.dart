@@ -12,9 +12,18 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void checkOnboarding() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
+
     if (pref.getBool("skip-onboarding") != null) {
-      Navigator.of(context).pushReplacementNamed('/home');
-      return;
+      bool? skip = pref.getBool("skip-onboarding");
+      String? token = pref.getString("token");
+
+      if (skip == true && token != null) {
+        Navigator.of(context).pushReplacementNamed('/home');
+        return;
+      } else if (skip == true) {
+        Navigator.of(context).pushReplacementNamed('/login');
+        return;
+      }
     }
   }
 
@@ -22,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 1), () {
       checkOnboarding();
       Navigator.of(context).pushReplacementNamed('/onboarding');
     });
