@@ -151,7 +151,7 @@ class _HowToRidePage extends State<HowToRidePage> {
               ),
               const SizedBox(height: 48),
               PrimaryButton(
-                title: "Skip",
+                title: "Done",
                 onTap: () {
                   context.read<ModeBloc>().add(BookingModeEvent());
                   Navigator.pushReplacementNamed(context, '/home');

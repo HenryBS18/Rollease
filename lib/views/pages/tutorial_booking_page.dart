@@ -94,7 +94,7 @@ class _TutorialBookingPageState extends State<TutorialBookingPage> {
           isRent ? TypeOfRent(onBoardingList: rentOnBoardingList) : TypeOfRent(onBoardingList: argoOnBoardingList),
           const SizedBox(height: 32),
           PrimaryButton(
-            title: "Skip",
+            title: "Done",
             onTap: () {
               Navigator.pushNamed(context, '/booking');
             },
