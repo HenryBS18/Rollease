@@ -52,6 +52,7 @@ dependencies:
   http: ^1.1.0
   dart_jsonwebtoken: ^2.14.0
   five_pointed_star: ^1.0.3
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +67,10 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/Icon Logo.png"
 
 # The following section is specific to Flutter packages.
 flutter:
